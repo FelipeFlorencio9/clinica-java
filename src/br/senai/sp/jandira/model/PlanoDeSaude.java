@@ -7,6 +7,19 @@ public class PlanoDeSaude {
 
 	// Métodos de acesso
 
+	// Contrutoresda classe
+	public PlanoDeSaude() {
+
+	}
+
+	public PlanoDeSaude(String operadora) {
+		this.operadora = operadora;
+	}
+
+	public PlanoDeSaude(String operadora, String tipoDoPlano) {
+		
+	}
+	// Metodos de acesso
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
 	}
@@ -22,8 +35,6 @@ public class PlanoDeSaude {
 	public String getTipoDoPlano() {
 		return this.tipoDoPlano;
 	}
-	
-	
 
 	public String getDadosDoPlano() {
 		return "Plano: " + this.operadora + ", " + this.tipoDoPlano;
