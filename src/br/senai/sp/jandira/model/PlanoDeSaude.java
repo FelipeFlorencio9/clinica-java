@@ -7,7 +7,7 @@ public class PlanoDeSaude {
 
 	// Métodos de acesso
 
-	// Contrutoresda classe
+	// Contrutores da classe
 	public PlanoDeSaude() {
 
 	}
@@ -17,6 +17,8 @@ public class PlanoDeSaude {
 	}
 
 	public PlanoDeSaude(String operadora, String tipoDoPlano) {
+		this.operadora = operadora;
+		this.tipoDoPlano = tipoDoPlano;
 		
 	}
 	// Metodos de acesso
