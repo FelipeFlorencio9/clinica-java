@@ -98,7 +98,7 @@ public class TesteArrayList {
 		especialidades.add(especialidade3);
 		
 		for (Especialidade especialidade : especialidades) {
-			System.out.println(especialidade.getDescrição());
+			System.out.println(especialidade.getDescricao());
 		}
 	}
 }

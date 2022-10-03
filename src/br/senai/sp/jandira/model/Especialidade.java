@@ -21,11 +21,11 @@ public class Especialidade {
 		return nome;
 	}
 
-	public static String getDescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
 
-	public static void setDescricao(String descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
