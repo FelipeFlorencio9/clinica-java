@@ -1,7 +1,7 @@
 package br.senai.sp.jandira.model;
 
 public class PlanoDeSaude {
-
+        private static Integer codigo = 100;
 	private String operadora;
 	private String tipoDoPlano;
 
@@ -42,4 +42,7 @@ public class PlanoDeSaude {
 		return "Plano: " + this.operadora + ", " + this.tipoDoPlano;
 
 	}
+        public Integer getCodigo(){
+            return codigo;
+        }
 }

@@ -40,6 +40,21 @@ public class TesteDAO {
             {0,11,12}
         };
         
+        String[] linha0 = {"Cotia","Itapevi", "Jandira"};
+        String[] linha1 = {"Vargem Grande","Barueri", "Pirapora"};
+        String[] linha2 = {"Osasco","Itu", "Valinhos"};
+        String[] linha3 = {"Presidente Prudente","São Roque", "Pindamonhangaba"};
+        
+        String[][] linhas = {linha0, linha1, linha2, linha3};
+        
+        
+        
+        String [][] frutas = {
+            {"Banana", "Pera", "Maçã"},
+            {"Melancia", "Uva", "Abacate"},
+            {"Ameixa", "Pêssego", "Nectaria"}
+    };
+        System.out.println(frutas[0][1]);  
     }
 
 }
