@@ -1,7 +1,6 @@
 package br.senai.sp.jandira.dao;
 
 import java.util.ArrayList;
-
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +19,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
 		this.setPlanoDeSaude(planoDeSaude);
 	}
 
-	public void gravar(PlanoDeSaude planoDeSaude) {
+	public static void gravar(PlanoDeSaude planoDeSaude) {
 		planos.add(planoDeSaude);
 
 	}
@@ -68,6 +67,25 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
             DefaultTableModel tableModel = new DefaultTableModel(dados, titulos);
             
             return tableModel;
-        };
-
+        }
+        
+        public static boolean excluir(Integer codigo){
+            
+             for(PlanoDeSaude p : planos){
+                 if(p.getCodigo().equals(codigo)){
+                 planos.remove(p);
+                 return true;
+                 }
+                
+             }
+            return false;
+        }
+        
+        
+         
+          
 }
+              
+                
+             
+        

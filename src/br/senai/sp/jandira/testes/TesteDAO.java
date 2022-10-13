@@ -16,11 +16,11 @@ public class TesteDAO {
         PlanoDeSaude plano3 = new PlanoDeSaude("Unimed", "Prata");
         PlanoDeSaude plano4 = new PlanoDeSaude("Notredame", "Advanced");
 
-        PlanoDeSaudeDAO dao = new PlanoDeSaudeDAO();
-        dao.gravar(plano1);
-        dao.gravar(plano2);
+        PlanoDeSaudeDAO d = new PlanoDeSaudeDAO();
+        d.gravar(plano1);
+        d.gravar(plano2);
 
-        for (PlanoDeSaude plano : dao.listarTodos()) {
+        for (PlanoDeSaude plano : d.listarTodos()) {
             System.out.println(plano.getOperadora());
         }
 
@@ -28,7 +28,7 @@ public class TesteDAO {
         dao2.gravar(plano3);
         dao2.gravar(plano4);
 
-        for (PlanoDeSaude plano : dao.listarTodos()) {
+        for (PlanoDeSaude plano : dao2.listarTodos()) {
             System.out.println(plano.getOperadora());
         }
         
@@ -56,5 +56,6 @@ public class TesteDAO {
     };
         System.out.println(frutas[0][1]);  
     }
-
+   
+    
 }
