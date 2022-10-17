@@ -28,10 +28,6 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
 		return planos;
 	}
 
-	public PlanoDeSaude getPlanoDeSaude() {
-		return planoDeSaude;
-	}
-
 	public void setPlanoDeSaude(PlanoDeSaude planoDeSaude) {
 		this.planoDeSaude = planoDeSaude;
 	}
@@ -45,7 +41,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
             planos.add(p2);
             planos.add(p3);
             planos.add(p4);
-        };
+        }
         
         public static DefaultTableModel getTableModel(){
             //Matriz que receberá os planos de saúde que serão utilizados na Tabela JTable
@@ -80,7 +76,26 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
              }
             return false;
         }
+        public static PlanoDeSaude getPlanoDeSaude(Integer codigo){
+            
+            for(PlanoDeSaude p : planos){
+                if(p.getCodigo().equals(codigo)){
+                return p;    
+                }
+            }
+            
+            return null;
+        }
         
+        public static void atualizar(PlanoDeSaude planoDeSaude){
+            for(PlanoDeSaude p : planos){
+                if(p.getCodigo().equals(planoDeSaude.getCodigo())){
+                   planos.set(planos.indexOf(p), planoDeSaude);
+                   break;
+                }
+            }
+            
+        }
         
          
           
