@@ -1,59 +1,71 @@
 package br.senai.sp.jandira.model;
 
+import java.time.LocalDate;
+
 public class PlanoDeSaude {
-        private static int contador = 100;
-        private Integer codigo;
-	private String operadora;
-	private String tipoDoPlano;
 
-	// Métodos de acesso
+    private static int contador = 100;
+    private Integer codigo;
+    private String operadora;
+    private String tipoDoPlano;
+//    private LocalDate validade;
 
-	// Contrutores da classe
-	public PlanoDeSaude() {
-            atualizarCodigo();
-         
-	}
+    // Métodos de acesso
+    // Contrutores da classe
+    public PlanoDeSaude() {
+        atualizarCodigo();
 
-	public PlanoDeSaude(String operadora) {
-		this.operadora = operadora;
-                atualizarCodigo();
-	}
+    }
 
-	public PlanoDeSaude(String operadora, String tipoDoPlano) {
-		this.operadora = operadora;
-		this.tipoDoPlano = tipoDoPlano;
-                atualizarCodigo();
+    public PlanoDeSaude(String operadora) {
+        this.operadora = operadora;
+        atualizarCodigo();
+    }
 
-	}
-        
-        private void atualizarCodigo(){
-            this.codigo = contador;
-            contador++;
-        }
-        
-	// Metodos de acesso
-	public void setOperadora(String operadora) {
-		this.operadora = operadora;
-	}
+    public PlanoDeSaude(String operadora, String tipoDoPlano) {
+        this.operadora = operadora;
+        this.tipoDoPlano = tipoDoPlano;
+        atualizarCodigo();
 
-	public String getOperadora() {
-		return this.operadora;
-	}
+    }
 
-	public void setTipoDoPlano(String tipoDoPlano) {
-		this.tipoDoPlano = tipoDoPlano;
-	}
+    private void atualizarCodigo() {
+        this.codigo = contador;
+        contador++;
+    }
 
-	public String getTipoDoPlano() {
-		return this.tipoDoPlano;
-	}
+    // Metodos de acesso
+    public void setOperadora(String operadora) {
+        this.operadora = operadora;
+    }
 
-	public String getDadosDoPlano() {
-		return "Plano: " + this.operadora + ", " + this.tipoDoPlano;
+    public String getOperadora() {
+        return this.operadora;
+    }
 
-	}
-        public Integer getCodigo(){
-            return codigo;
-        }
-        
+    public void setTipoDoPlano(String tipoDoPlano) {
+        this.tipoDoPlano = tipoDoPlano;
+    }
+
+    public String getTipoDoPlano() {
+        return this.tipoDoPlano;
+    }
+
+    public String getDadosDoPlano() {
+        return "Plano: " + this.operadora + ", " + this.tipoDoPlano;
+
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+//    public LocalDate getValidade() {
+//        return validade;
+//    }
+//
+//    public void setValidade(LocalDate validade) {
+//        this.validade = validade;
+//    }
+    
 }

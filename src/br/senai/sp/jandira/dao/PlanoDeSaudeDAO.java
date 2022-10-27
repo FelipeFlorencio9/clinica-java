@@ -16,7 +16,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
 	}
 
 	public PlanoDeSaudeDAO(PlanoDeSaude planoDeSaude) {
-		this.setPlanoDeSaude(planoDeSaude);
+		this.planoDeSaude = planoDeSaude;
 	}
 
 	public static void gravar(PlanoDeSaude planoDeSaude) {
@@ -53,6 +53,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
                 dados[i][0] = p.getCodigo();
                 dados[i][1] = p.getOperadora();
                 dados[i][2] = p.getTipoDoPlano();
+//                dados[i][3] = p.getValidade();
                 i++;
             }
             // Definir um nome com as colunas da tabela

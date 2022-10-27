@@ -5,9 +5,10 @@ import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import java.awt.event.ActionEvent;
 
 import java.util.Arrays;
+import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 
 public class HomeFrame extends javax.swing.JFrame {
 
@@ -18,8 +19,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private JButton previousButton = null;
     private JPanel lastPanel = null;
     private JPanel previousPanel = null;
-    
-    
+
     //Constantes da classe
     private final int X_POSITION = 20;
     private final int Y_POSITION = 170;
@@ -29,7 +29,7 @@ public class HomeFrame extends javax.swing.JFrame {
     //Cores 
     java.awt.Color corPadrao = new java.awt.Color(153, 204, 255);
     java.awt.Color corDeSelecao = new java.awt.Color(153, 255, 153);
-    
+
     public HomeFrame() {
         initComponents();
         buttonHome.setBackground(corDeSelecao);
@@ -38,8 +38,10 @@ public class HomeFrame extends javax.swing.JFrame {
         initPanels();
         previousPanel = panelHome;
         previousButton = buttonHome;
-        
-    };
+
+    }
+
+    ;
     
     
     
@@ -209,7 +211,21 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaidaActionPerformed
-
+        previousButton.setBackground(corPadrao);
+        buttonSaida.setBackground(corDeSelecao);
+        int confirmacaoDeSaida
+                = JOptionPane.showConfirmDialog(
+                        this,
+                        "Deseja encerrar a aplicação?",
+                        "Saída",
+                        JOptionPane.YES_OPTION,
+                        JOptionPane.YES_OPTION);
+        if (confirmacaoDeSaida == 0) {
+            dispose();
+        } else {
+            buttonSaida.setBackground(corPadrao);
+            previousButton.setBackground(corDeSelecao);
+        }
     }//GEN-LAST:event_buttonSaidaActionPerformed
 
     private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed
@@ -221,12 +237,12 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPacientesActionPerformed
 
     private void buttonAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendaActionPerformed
-     
+
     }//GEN-LAST:event_buttonAgendaActionPerformed
 
     private void buttonPlanosDeSaude1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanosDeSaude1ActionPerformed
         trocaCorDosBotoes(evt);
-        
+
         previousPanel.setVisible(false);
         panelPlanosDeSaude.setVisible(true);
         previousPanel = panelPlanosDeSaude;
@@ -234,7 +250,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         trocaCorDosBotoes(evt);
-        
+
         previousPanel.setVisible(false);
         panelHome.setVisible(true);
         previousPanel = panelHome;
@@ -243,15 +259,16 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void buttonEspecialidade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidade1ActionPerformed
         trocaCorDosBotoes(evt);
-        
+
         previousPanel.setVisible(false);
         panelEspecialidade.setVisible(true);
         previousPanel = panelEspecialidade;
-       
+
     }//GEN-LAST:event_buttonEspecialidade1ActionPerformed
     private void ocultarUltimoPainel() {
-       previousPanel.setVisible(false);
+        previousPanel.setVisible(false);
     }
+
     private void ocultarTodosOsPaineis() {
         panelHome.setVisible(false);
         panelEspecialidade.setVisible(false);
@@ -298,7 +315,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 ALTURA);
         getContentPane().add(panelHome);
         panelHome.setVisible(true);
-        
+
         panelPlanosDeSaude = new PanelPlanosDeSaude();
         panelPlanosDeSaude.setBounds(
                 X_POSITION,
@@ -318,17 +335,18 @@ public class HomeFrame extends javax.swing.JFrame {
         panelEspecialidade.setVisible(false);
 
     }
-    public void trocaCorDosBotoes(ActionEvent evt){
+
+    public void trocaCorDosBotoes(ActionEvent evt) {
         previousButton.setBackground(corPadrao);
-        lastButton = (JButton)evt.getSource();
+        lastButton = (JButton) evt.getSource();
         lastButton.setBackground(corDeSelecao);
         previousButton = lastButton;
+    }
+
 }
-    
-}
-    
+
 // plano de saude buttom
 ///ocultarTodosOsPaineis();
-       // pintarBotoesParaCorPadrao();
-       // panelPlanosDeSaude.setVisible(true);
+// pintarBotoesParaCorPadrao();
+// panelPlanosDeSaude.setVisible(true);
        // buttonPlanosDeSaude1.setBackground(corDeSelecao);
