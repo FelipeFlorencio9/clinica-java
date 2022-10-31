@@ -17,7 +17,7 @@ public class HomeFrame extends javax.swing.JFrame {
     PanelEspecialidade panelEspecialidade;
     private JButton lastButton = null;
     private JButton previousButton = null;
-    private JPanel lastPanel = null;
+//  private JPanel lastPanel;
     private JPanel previousPanel = null;
 
     //Constantes da classe
@@ -32,19 +32,11 @@ public class HomeFrame extends javax.swing.JFrame {
 
     public HomeFrame() {
         initComponents();
-        buttonHome.setBackground(corDeSelecao);
-        PlanoDeSaudeDAO.criarPlanosDeSaudeTeste();
-        EspecialidadeDAO.criarEspecialidadesDeTeste();
+        initModelTables();
         initPanels();
-        previousPanel = panelHome;
-        previousButton = buttonHome;
-
+        passHomeToDefault();
     }
 
-    ;
-    
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,7 +73,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         labelHome.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         labelHome.setForeground(new java.awt.Color(51, 153, 255));
-        labelHome.setText("Sistema de Agendamento de Consultas");
+        labelHome.setText("Sistema para Agendamento de Consultas");
         panelApp.add(labelHome);
         labelHome.setBounds(180, 20, 730, 60);
 
@@ -181,7 +173,7 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel2.setText("Site: www.sisacon.com.br");
         panelHome.add(jLabel2);
-        jLabel2.setBounds(40, 260, 400, 17);
+        jLabel2.setBounds(40, 270, 400, 17);
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 153, 255));
@@ -241,30 +233,37 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAgendaActionPerformed
 
     private void buttonPlanosDeSaude1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanosDeSaude1ActionPerformed
-        trocaCorDosBotoes(evt);
-
+        trocarCorDosBotoes(evt);
         previousPanel.setVisible(false);
         panelPlanosDeSaude.setVisible(true);
         previousPanel = panelPlanosDeSaude;
     }//GEN-LAST:event_buttonPlanosDeSaude1ActionPerformed
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
-        trocaCorDosBotoes(evt);
-
+        trocarCorDosBotoes(evt);
         previousPanel.setVisible(false);
         panelHome.setVisible(true);
         previousPanel = panelHome;
-
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonEspecialidade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidade1ActionPerformed
-        trocaCorDosBotoes(evt);
-
+        trocarCorDosBotoes(evt);
         previousPanel.setVisible(false);
         panelEspecialidade.setVisible(true);
         previousPanel = panelEspecialidade;
-
     }//GEN-LAST:event_buttonEspecialidade1ActionPerformed
+    
+    private void initModelTables() {
+        PlanoDeSaudeDAO.criarPlanosDeSaudeTeste();
+        EspecialidadeDAO.criarEspecialidadesDeTeste();
+    }
+
+    private void passHomeToDefault() {
+        buttonHome.setBackground(corDeSelecao);
+        previousPanel = panelHome;
+        previousButton = buttonHome;
+    }
+    
     private void ocultarUltimoPainel() {
         previousPanel.setVisible(false);
     }
@@ -284,7 +283,6 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonMedicos.setBackground(corPadrao);
         buttonSaida.setBackground(corPadrao);
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgenda;
@@ -336,7 +334,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     }
 
-    public void trocaCorDosBotoes(ActionEvent evt) {
+    public void trocarCorDosBotoes(ActionEvent evt) {
         previousButton.setBackground(corPadrao);
         lastButton = (JButton) evt.getSource();
         lastButton.setBackground(corDeSelecao);
@@ -345,8 +343,14 @@ public class HomeFrame extends javax.swing.JFrame {
 
 }
 
-// plano de saude buttom
-///ocultarTodosOsPaineis();
-// pintarBotoesParaCorPadrao();
-// panelPlanosDeSaude.setVisible(true);
-       // buttonPlanosDeSaude1.setBackground(corDeSelecao);
+//  Outro método para o button PlanoDeSaude(){
+//      ocultarTodosOsPaineis();
+//      pintarBotoesParaCorPadrao();
+//      panelPlanosDeSaude.setVisible(true);
+//      buttonPlanosDeSaude1.setBackground(corDeSelecao);
+//  }
+//  Possível método futuro para "troca"DePainel"(){
+//      lastPanel = algumaCoisa.pegarUltimoPanelExibido;
+//      lastPanel.setVisible(false);
+//      previousPanel = panelPlanosDeSaude;
+//  }

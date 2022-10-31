@@ -1,3 +1,4 @@
+
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
@@ -12,9 +13,9 @@ public class EspecialidadeDAO {
     public EspecialidadeDAO() {
 
     }
-
+    
     public EspecialidadeDAO(Especialidade especialidade) {
-
+        this.especialidade = especialidade;
     }
 
     public static void gravar(Especialidade especialidade) {
