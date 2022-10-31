@@ -28,8 +28,7 @@ public class Especialidade {
     }
     //Métodos de acesso getters e setters
 
-    ;
-	public void setNome(String novoNome) {
+    public void setNome(String novoNome) {
         this.nome = novoNome;
     }
 
@@ -47,6 +46,10 @@ public class Especialidade {
 
     public Integer getCodigo() {
         return codigo;
+    }
+    
+    public String getEspecialidadeSeparadoPorPontoEVirgula(){
+        return this.codigo + ";" + this.nome + ";" + this.descricao;
     }
 
 }

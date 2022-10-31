@@ -59,6 +59,9 @@ public class TesteEspecialidadeDAOComponentes {
         i = EspecialidadeDAO.listarTodos().indexOf(e);
         System.out.println(i);
         System.out.println(""); 
+                
+        EspecialidadeDAO.gravar(e2);
+        
     }
 
 }

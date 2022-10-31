@@ -1,5 +1,6 @@
 package br.senai.sp.jandira;
 
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.ui.HomeFrame;
 
 public class ClinicaApp {

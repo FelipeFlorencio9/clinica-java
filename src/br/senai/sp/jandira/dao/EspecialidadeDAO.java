@@ -2,14 +2,26 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
 
     private Especialidade especialidade;
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
-
+    private final static String ARQUIVO = "C:\\Users\\22282108\\java-file\\especialidade.txt";
+    private final static Path PATH = Paths.get(ARQUIVO);
+    
+    //ARQUIVO é o caminho e o PATH é o caminho convertido
+    
     public EspecialidadeDAO() {
 
     }
@@ -19,8 +31,25 @@ public class EspecialidadeDAO {
     }
 
     public static void gravar(Especialidade especialidade) {
+        //Gravar o plano de saude no arquivo texto
         especialidades.add(especialidade);
-
+        try {
+            //Criar um buffer de escrita
+            BufferedWriter bw = Files.newBufferedWriter(
+                            PATH,
+                            StandardOpenOption.APPEND,
+                            StandardOpenOption.WRITE);
+            bw.write(especialidade.getEspecialidadeSeparadoPorPontoEVirgula());
+            bw.newLine();
+            bw.close();
+            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Ocorreu um erro ao gravar.\n\n Entre em contato com o suporte.",
+                    "Erro ao gravar.",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public static ArrayList<Especialidade> listarTodos() {
@@ -31,17 +60,29 @@ public class EspecialidadeDAO {
         this.especialidade = especialidade;
     }
     public static void criarEspecialidadesDeTeste(){
-            Especialidade e1 = new Especialidade("Cardiologia", "Cuida do coração");
-            Especialidade e2 = new Especialidade("Gastroenterologia", "Cuida da digestão e relacionados.");
-            Especialidade e3 = new Especialidade("Ginecologista", "Cuida da saúde da mulher regularmente como todo.");
-            Especialidade e4 = new Especialidade("Neurologia", "Trata, estuda e cuida dos distúrbios estruturais do sistema nervoso.");
-            Especialidade e5 = new Especialidade("Oftalmologista", "estuda e trata as doenças relacionadas ao olho, à refração e aos olhos e seus anexos");
-            especialidades.add(e1);
-            especialidades.add(e2);
-            especialidades.add(e3);
-            especialidades.add(e4);
-            especialidades.add(e5);
+        try {
+            // Abrir o arquivo para leitura
+            BufferedReader br = Files.newBufferedReader(PATH);
+            
+            String linha = "";
+            
+            //Ler uma linha do arquivo e armazenar na variável linha
+            linha = br.readLine();
+            int contador = 0;
+            while(linha !=null){
+                String[] linhaVetor = linha.split(";");
+                System.out.println(linhaVetor[contador]);
+                
+                System.out.println("---------------------------");
+               br.close();
+            }
+            
+            System.out.println("Fim do arquivo");
+            br.close();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro.");
         }
+ }
 
     public static DefaultTableModel getTableModel() {
 
