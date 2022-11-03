@@ -1,4 +1,3 @@
-
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
@@ -19,33 +18,33 @@ public class EspecialidadeDAO {
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
     private final static String ARQUIVO = "C:\\Users\\22282108\\java-file\\especialidade.txt";
     private final static Path PATH = Paths.get(ARQUIVO);
-    
+
     //ARQUIVO é o caminho e o PATH é o caminho convertido
-    
     public EspecialidadeDAO() {
 
     }
-    
+
     public EspecialidadeDAO(Especialidade especialidade) {
         this.especialidade = especialidade;
     }
 
     public static void gravar(Especialidade especialidade) {
-        //Gravar o plano de saude no arquivo texto
         especialidades.add(especialidade);
+        
         try {
-            //Criar um buffer de escrita
             BufferedWriter bw = Files.newBufferedWriter(
-                            PATH,
-                            StandardOpenOption.APPEND,
-                            StandardOpenOption.WRITE);
-            bw.write(especialidade.getEspecialidadeSeparadoPorPontoEVirgula());
+                    PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            String novaEspecialidade = especialidade.getEspecialidadeSeparadoPorPontoEVirgula();
+            
+            bw.write(novaEspecialidade);
             bw.newLine();
             bw.close();
-            
+
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
-                    null, 
+                    null,
                     "Ocorreu um erro ao gravar.\n\n Entre em contato com o suporte.",
                     "Erro ao gravar.",
                     JOptionPane.ERROR_MESSAGE);
@@ -59,30 +58,38 @@ public class EspecialidadeDAO {
     public void setEspecialidade(Especialidade especialidade) {
         this.especialidade = especialidade;
     }
-    public static void criarEspecialidadesDeTeste(){
+
+    public static void getListaDeEspecialidades() {
         try {
-            // Abrir o arquivo para leitura
             BufferedReader br = Files.newBufferedReader(PATH);
+ 
+            String linha = br.readLine();
             
-            String linha = "";
-            
-            //Ler uma linha do arquivo e armazenar na variável linha
-            linha = br.readLine();
-            int contador = 0;
-            while(linha !=null){
+
+            while(linha != null && !linha.isEmpty()){
+
                 String[] linhaVetor = linha.split(";");
-                System.out.println(linhaVetor[contador]);
                 
-                System.out.println("---------------------------");
-               br.close();
+                Especialidade novaEspecialidade = new Especialidade(
+                        Integer.valueOf(linhaVetor[0]),
+                         linhaVetor[1],
+                         linhaVetor[2]);
+
+                especialidades.add(novaEspecialidade);
+ 
+                linha = br.readLine();
+                
             }
-            
-            System.out.println("Fim do arquivo");
             br.close();
+            
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro.");
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Ocorreu um erro ao abrir o arquivo.",
+                    "Erro de leitura",
+                    JOptionPane.ERROR_MESSAGE);
         }
- }
+    }
 
     public static DefaultTableModel getTableModel() {
 
@@ -95,41 +102,44 @@ public class EspecialidadeDAO {
             dados[i][2] = e.getDescricao();
             i++;
         }
-        
+
         String[] titulos = {"Código", "Nome da Especialidade", "Descrição"};
 
         DefaultTableModel tableModelEspecialidade = new DefaultTableModel(dados, titulos);
 
         return tableModelEspecialidade;
     }
-    public static boolean excluir(Integer codigo){
-            
-             for(Especialidade e : especialidades){
-                 if(e.getCodigo().equals(codigo)){
-                 especialidades.remove(e);
-                 return true;
-                 }
-                
-             }
-            return false;
-        }
-    public static Especialidade getEspecialidade(Integer codigo){
-            
-            for(Especialidade e : especialidades){
-                if(e.getCodigo().equals(codigo)){
-                return e;    
-                }
+
+    public static boolean excluir(Integer codigo) {
+
+        for (Especialidade e : especialidades) {
+            if (e.getCodigo().equals(codigo)) {
+                especialidades.remove(e);
+                return true;
             }
-            
-            return null;
+
         }
-    public static void atualizar(Especialidade especialidade){
-            for(Especialidade e : especialidades){
-                if(e.getCodigo().equals(especialidade.getCodigo())){
-                   especialidades.set(especialidades.indexOf(e), especialidade);
-                   break;
-                }
+        return false;
+    }
+
+    public static Especialidade getEspecialidade(Integer codigo) {
+
+        for (Especialidade e : especialidades) {
+            if (e.getCodigo().equals(codigo)) {
+                return e;
             }
-            
         }
+
+        return null;
+    }
+
+    public static void atualizar(Especialidade especialidade) {
+        for (Especialidade e : especialidades) {
+            if (e.getCodigo().equals(especialidade.getCodigo())) {
+                especialidades.set(especialidades.indexOf(e), especialidade);
+                break;
+            }
+        }
+
+    }
 }

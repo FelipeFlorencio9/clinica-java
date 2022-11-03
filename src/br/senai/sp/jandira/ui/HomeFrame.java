@@ -254,8 +254,8 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonEspecialidade1ActionPerformed
     
     private void initModelTables() {
-        PlanoDeSaudeDAO.criarPlanosDeSaudeTeste();
-        EspecialidadeDAO.criarEspecialidadesDeTeste();
+        PlanoDeSaudeDAO.getListaPlanosDeSaude();
+        EspecialidadeDAO.getListaDeEspecialidades();
     }
 
     private void passHomeToDefault() {
