@@ -1,90 +1,38 @@
 package br.senai.sp.jandira.model;
 
-public class Paciente {
+public class Paciente extends Pessoa {
 
-	// Atributos
-	private String nome;
-	private String email;
-	private PlanoDeSaude planoDeSaude;
-	private String rg;
-	private String cpf;
-	private String telefone;
-	private Gênero genero;
-	private String tipoSanguineo;
-	private Endereço endereço;
+    private Gênero genero;
+    private String tipoSanguineo;
+    private PlanoDeSaude planoDeSaude;
 
-	// Métodos de acesso
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Paciente() {
 
-	public String getNome() {
-		return nome;
-	}
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public PlanoDeSaude getPlanoDeSaude() {
+        return planoDeSaude;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setPlanoDeSaude(PlanoDeSaude planoDeSaude) {
+        this.planoDeSaude = planoDeSaude;
+    }
+    
 
-	public void setPlanoDeSaude(PlanoDeSaude planoDeSaude) {
-		this.planoDeSaude = planoDeSaude;
-	}
+    public Gênero getGenero() {
+        return genero;
+    }
 
-	public PlanoDeSaude getPlanoDeSaude() {
-		return planoDeSaude;
-	}
+    public void setGenero(Gênero genero) {
+        this.genero = genero;
+    }
 
-	public void setEndereço(Endereço endereço) {
-		this.endereço = endereço;
-	}
+    public String getTipoSanguineo() {
+        return tipoSanguineo;
+    }
 
-	public Endereço getEndereço() {
-		return endereço;
-	}
-
-	public String getRg() {
-		return rg;
-	}
-
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-
-	public Gênero getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Gênero genero) {
-		this.genero = genero;
-	}
-
-	public String getTipoSanguineo() {
-		return tipoSanguineo;
-	}
-
-	public void setTipoSanguineo(String tipoSanguineo) {
-		this.tipoSanguineo = tipoSanguineo;
-	}
+    public void setTipoSanguineo(String tipoSanguineo) {
+        this.tipoSanguineo = tipoSanguineo;
+    }
 
 }

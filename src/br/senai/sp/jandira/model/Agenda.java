@@ -6,8 +6,8 @@ import java.time.LocalTime;
 public class Agenda {
 
 	private Paciente paciente;
-	private Especialidade especialidade;
 	private Medico medico;
+	private Especialidade especialidade;
 	private LocalDate dataDaConsulta;
 	private LocalTime horaDaConsulta;
 	private String observacoes;

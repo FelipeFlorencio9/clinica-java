@@ -3,6 +3,7 @@ package br.senai.sp.jandira.dao;
 import br.senai.sp.jandira.model.Especialidade;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,8 +17,10 @@ public class EspecialidadeDAO {
 
     private Especialidade especialidade;
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
-    private final static String ARQUIVO = "C:\\Users\\22282108\\java-file\\especialidade.txt";
+    private final static String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade.txt";
     private final static Path PATH = Paths.get(ARQUIVO);
+    private final static String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade_temp.txt";
+    private final static Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
 
     //ARQUIVO é o caminho e o PATH é o caminho convertido
     public EspecialidadeDAO() {
@@ -115,12 +118,55 @@ public class EspecialidadeDAO {
         for (Especialidade e : especialidades) {
             if (e.getCodigo().equals(codigo)) {
                 especialidades.remove(e);
-                return true;
+                break;
             }
 
         }
+        
+        //Reconstruir um arquivo atualizado, ou seja, 
+        //sem o plano que foi removido
+        
+        //PASSO 01 - Criar uma representação dos arquivos que serão manipulados
+        File arquivoAtual = new File(ARQUIVO);
+        File arquivoTemp = new File(ARQUIVO_TEMP);
+        
+        try {
+            //Criar o arquivo temporário
+            arquivoTemp.createNewFile();
+            
+            //Abrir o arquivo temporário para escrita
+            BufferedWriter bwTemp = Files.newBufferedWriter(
+                    PATH_TEMP,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            
+            //Iterar a lista para adicionar os planos no arquivo temporário
+            for (Especialidade e : especialidades){
+                bwTemp.write(e.getEspecialidadeSeparadoPorPontoEVirgula());
+                bwTemp.newLine();
+            }
+            //Fechar o arquivo temporário
+            bwTemp.close();
+            
+            //Excluir o arquivo atual - plano_de_saude.txt
+            arquivoAtual.delete();
+            
+            //Renomear o arquivo temporário para o nome do arquivo atual
+            arquivoTemp.renameTo(arquivoAtual);
+            
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Ocorreu um erro ao criar o arquivo!",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
         return false;
     }
+   
+    
 
     public static Especialidade getEspecialidade(Integer codigo) {
 

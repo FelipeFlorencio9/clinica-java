@@ -20,8 +20,8 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
     private PlanoDeSaude planoDeSaude;
     private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
 
-    private static final String ARQUIVO = "C:\\Users\\22282108\\java-file\\plano_de_saude.txt";
-    private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\java-file\\plano_de_saude_temp.txt";
+    private static final String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\plano_de_saude.txt";
+    private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\plano_de_saude_temp.txt";
     private static final Path PATH = Paths.get(ARQUIVO);
     private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
 
@@ -35,10 +35,10 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
     }
 
     public static void gravar(PlanoDeSaude planoDeSaude) {
-
-        
+        planos.add(planoDeSaude);
+    
         //Gravar plano de saúde no arquivo
-
+        
         try {
             BufferedWriter bw = Files.newBufferedWriter(
                     PATH,
@@ -46,6 +46,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
                     StandardOpenOption.WRITE);
 
             String novoPlanoDeSaude = planoDeSaude.getPlanoDeSaudeSeparadoPorPontoEVirgula();
+            
             bw.write(novoPlanoDeSaude);
             bw.newLine();
             bw.close();
@@ -58,7 +59,6 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
                     JOptionPane.ERROR_MESSAGE);
         }
         
-        planos.add(planoDeSaude);
     }
 
     public static ArrayList<PlanoDeSaude> listarTodos() {
@@ -203,7 +203,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
         }
         
     }
-    private void static atualizarArquivo(){
+    public static void  atualizarArquivo(){
         //Reconstruir um arquivo atualizado, ou seja, 
         //sem o plano que foi removido
         
