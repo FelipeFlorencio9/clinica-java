@@ -8,9 +8,15 @@ public class Pessoa {
     private String telefone;
     private String email;
     private LocalDate dataDeNascimento;
-
+    
     public Pessoa(){
         
+    }
+    public Pessoa(String nome, String telefone, String email, LocalDate dataDeNascimento){
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.dataDeNascimento = dataDeNascimento;
     }
     public String getNome() {
         return nome;

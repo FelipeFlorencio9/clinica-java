@@ -1,4 +1,5 @@
-101;testando;testando
-102;alo;alo
-103;ghjghj;ghgjgh
-105;ghjghj;ghjgh
+105;Cardiologia ;Identificca e trata das doenças que acometem o coração bem como os outros componentes do sistema circulatório.
+106;Clínico(a) Geral;Identifica doenças e os encaminha para o lugar apropriado.
+107;Pediatria;Cuida de crianças e trato de menores.
+108;Dermatologia;Atua em procedimentos clínicos, cirúrgicos e cosmiátricos. 
+109;Nefrologia;Dedicado(a) ao diagnóstico e tratamento clínico das doenças do sistema urinário, principalmente relacionadas ao rim, além de doenças sistêmicas.

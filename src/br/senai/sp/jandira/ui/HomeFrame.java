@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
+import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import java.awt.event.ActionEvent;
 
@@ -15,6 +16,7 @@ public class HomeFrame extends javax.swing.JFrame {
     //Atributos da classe
     PanelPlanosDeSaude panelPlanosDeSaude;
     PanelEspecialidade panelEspecialidade;
+    PanelMedico panelMedico;
     private JButton lastButton = null;
     private JButton previousButton = null;
 //  private JPanel lastPanel;
@@ -221,7 +223,10 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSaidaActionPerformed
 
     private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed
-
+        trocarCorDosBotoes(evt);
+        previousPanel.setVisible(false);
+        panelMedico.setVisible(true);
+        previousPanel = panelMedico;
     }//GEN-LAST:event_buttonMedicosActionPerformed
 
     private void buttonPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPacientesActionPerformed
@@ -256,6 +261,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private void initModelTables() {
         PlanoDeSaudeDAO.getListaPlanosDeSaude();
         EspecialidadeDAO.getListaDeEspecialidades();
+        MedicoDAO.getListaDeMedicos();
     }
 
     private void passHomeToDefault() {
@@ -331,7 +337,15 @@ public class HomeFrame extends javax.swing.JFrame {
                 ALTURA);
         getContentPane().add(panelEspecialidade);
         panelEspecialidade.setVisible(false);
-
+        
+        panelMedico = new PanelMedico();
+        panelMedico.setBounds(
+                X_POSITION,
+                Y_POSITION,
+                LARGE,
+                ALTURA);
+        getContentPane().add(panelMedico);
+        panelMedico.setVisible(false);
     }
 
     public void trocarCorDosBotoes(ActionEvent evt) {

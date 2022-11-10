@@ -30,14 +30,26 @@ public class DialogMedicos extends javax.swing.JPanel {
         labelIcon = new javax.swing.JLabel();
         labelHome = new javax.swing.JLabel();
         panelHome = new javax.swing.JPanel();
-        labelTipoDoPlano = new javax.swing.JLabel();
-        labelCodigo = new javax.swing.JLabel();
-        labelTipoDaOperadora = new javax.swing.JLabel();
         textFieldTipoDoPlano = new javax.swing.JTextField();
         textFieldCodigo = new javax.swing.JTextField();
         textFieldTipoDaOperadora = new javax.swing.JTextField();
         buttonCancelar = new javax.swing.JButton();
         buttonSalvar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        labelCodigo1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        labelCodigo3 = new javax.swing.JLabel();
+        labelCodigo4 = new javax.swing.JLabel();
+        labelCodigo5 = new javax.swing.JLabel();
+        labelCodigo6 = new javax.swing.JLabel();
+        textFieldTipoDoPlano1 = new javax.swing.JTextField();
+        labelCodigo7 = new javax.swing.JLabel();
+        labelCodigo8 = new javax.swing.JLabel();
+        textFieldTipoDoPlano3 = new javax.swing.JTextField();
+        textFieldTipoDoPlano4 = new javax.swing.JTextField();
+        labelCodigo9 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -61,31 +73,13 @@ public class DialogMedicos extends javax.swing.JPanel {
         panelHome.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelHome.setLayout(null);
 
-        labelTipoDoPlano.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        labelTipoDoPlano.setForeground(new java.awt.Color(51, 153, 255));
-        labelTipoDoPlano.setText("Tipo do plano");
-        panelHome.add(labelTipoDoPlano);
-        labelTipoDoPlano.setBounds(70, 230, 240, 30);
-
-        labelCodigo.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        labelCodigo.setForeground(new java.awt.Color(51, 153, 255));
-        labelCodigo.setText("Código");
-        panelHome.add(labelCodigo);
-        labelCodigo.setBounds(60, 40, 110, 30);
-
-        labelTipoDaOperadora.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        labelTipoDaOperadora.setForeground(new java.awt.Color(51, 153, 255));
-        labelTipoDaOperadora.setText("Nome do Médico");
-        panelHome.add(labelTipoDaOperadora);
-        labelTipoDaOperadora.setBounds(70, 140, 240, 30);
-
         textFieldTipoDoPlano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldTipoDoPlanoActionPerformed(evt);
             }
         });
         panelHome.add(textFieldTipoDoPlano);
-        textFieldTipoDoPlano.setBounds(70, 260, 240, 30);
+        textFieldTipoDoPlano.setBounds(120, 40, 100, 30);
 
         textFieldCodigo.setEditable(false);
         textFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +88,7 @@ public class DialogMedicos extends javax.swing.JPanel {
             }
         });
         panelHome.add(textFieldCodigo);
-        textFieldCodigo.setBounds(70, 70, 100, 30);
+        textFieldCodigo.setBounds(30, 40, 70, 30);
 
         textFieldTipoDaOperadora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +96,7 @@ public class DialogMedicos extends javax.swing.JPanel {
             }
         });
         panelHome.add(textFieldTipoDaOperadora);
-        textFieldTipoDaOperadora.setBounds(70, 170, 240, 30);
+        textFieldTipoDaOperadora.setBounds(240, 40, 330, 30);
 
         buttonCancelar.setBackground(new java.awt.Color(153, 204, 255));
         buttonCancelar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
@@ -115,7 +109,7 @@ public class DialogMedicos extends javax.swing.JPanel {
             }
         });
         panelHome.add(buttonCancelar);
-        buttonCancelar.setBounds(470, 330, 130, 45);
+        buttonCancelar.setBounds(480, 350, 130, 45);
 
         buttonSalvar.setBackground(new java.awt.Color(153, 204, 255));
         buttonSalvar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
@@ -128,10 +122,102 @@ public class DialogMedicos extends javax.swing.JPanel {
             }
         });
         panelHome.add(buttonSalvar);
-        buttonSalvar.setBounds(340, 330, 120, 45);
+        buttonSalvar.setBounds(340, 350, 130, 45);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        panelHome.add(jScrollPane1);
+        jScrollPane1.setBounds(210, 200, 150, 146);
+
+        labelCodigo1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo1.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo1.setText("Nome do(a) Médico(a)");
+        panelHome.add(labelCodigo1);
+        labelCodigo1.setBounds(240, 10, 330, 30);
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList2);
+
+        panelHome.add(jScrollPane2);
+        jScrollPane2.setBounds(30, 200, 150, 146);
+
+        labelCodigo3.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo3.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo3.setText("Código");
+        panelHome.add(labelCodigo3);
+        labelCodigo3.setBounds(30, 10, 70, 30);
+
+        labelCodigo4.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo4.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo4.setText("Selecionadas");
+        panelHome.add(labelCodigo4);
+        labelCodigo4.setBounds(200, 170, 170, 30);
+
+        labelCodigo5.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo5.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo5.setText("CRM");
+        panelHome.add(labelCodigo5);
+        labelCodigo5.setBounds(120, 10, 100, 30);
+
+        labelCodigo6.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo6.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo6.setText("Especialidades");
+        panelHome.add(labelCodigo6);
+        labelCodigo6.setBounds(30, 170, 170, 30);
+
+        textFieldTipoDoPlano1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldTipoDoPlano1ActionPerformed(evt);
+            }
+        });
+        panelHome.add(textFieldTipoDoPlano1);
+        textFieldTipoDoPlano1.setBounds(390, 120, 180, 30);
+
+        labelCodigo7.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo7.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo7.setText("Data De Nascimento");
+        panelHome.add(labelCodigo7);
+        labelCodigo7.setBounds(390, 90, 180, 30);
+
+        labelCodigo8.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo8.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo8.setText("Telefone:");
+        panelHome.add(labelCodigo8);
+        labelCodigo8.setBounds(30, 90, 100, 30);
+
+        textFieldTipoDoPlano3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldTipoDoPlano3ActionPerformed(evt);
+            }
+        });
+        panelHome.add(textFieldTipoDoPlano3);
+        textFieldTipoDoPlano3.setBounds(30, 120, 100, 30);
+
+        textFieldTipoDoPlano4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldTipoDoPlano4ActionPerformed(evt);
+            }
+        });
+        panelHome.add(textFieldTipoDoPlano4);
+        textFieldTipoDoPlano4.setBounds(150, 120, 220, 30);
+
+        labelCodigo9.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labelCodigo9.setForeground(new java.awt.Color(51, 153, 255));
+        labelCodigo9.setText("Email:");
+        panelHome.add(labelCodigo9);
+        labelCodigo9.setBounds(150, 90, 220, 30);
 
         add(panelHome);
-        panelHome.setBounds(20, 100, 620, 390);
+        panelHome.setBounds(20, 100, 620, 410);
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldTipoDoPlanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTipoDoPlanoActionPerformed
@@ -147,31 +233,50 @@ public class DialogMedicos extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldTipoDaOperadoraActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        dispose();
+
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-        if (tipoOperacao == TipoOperacao.ADICIONAR){
-            gravar();
-        } else {
-            atualizar();
-        }
-
+        
     }//GEN-LAST:event_buttonSalvarActionPerformed
+
+    private void textFieldTipoDoPlano1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTipoDoPlano1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldTipoDoPlano1ActionPerformed
+
+    private void textFieldTipoDoPlano3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTipoDoPlano3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldTipoDoPlano3ActionPerformed
+
+    private void textFieldTipoDoPlano4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTipoDoPlano4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldTipoDoPlano4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonSalvar;
-    private javax.swing.JLabel labelCodigo;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelCodigo1;
+    private javax.swing.JLabel labelCodigo3;
+    private javax.swing.JLabel labelCodigo4;
+    private javax.swing.JLabel labelCodigo5;
+    private javax.swing.JLabel labelCodigo6;
+    private javax.swing.JLabel labelCodigo7;
+    private javax.swing.JLabel labelCodigo8;
+    private javax.swing.JLabel labelCodigo9;
     private javax.swing.JLabel labelHome;
     private javax.swing.JLabel labelIcon;
-    private javax.swing.JLabel labelTipoDaOperadora;
-    private javax.swing.JLabel labelTipoDoPlano;
     private javax.swing.JPanel panelApp;
     private javax.swing.JPanel panelHome;
     private javax.swing.JTextField textFieldCodigo;
     private javax.swing.JTextField textFieldTipoDaOperadora;
     private javax.swing.JTextField textFieldTipoDoPlano;
+    private javax.swing.JTextField textFieldTipoDoPlano1;
+    private javax.swing.JTextField textFieldTipoDoPlano3;
+    private javax.swing.JTextField textFieldTipoDoPlano4;
     // End of variables declaration//GEN-END:variables
 }

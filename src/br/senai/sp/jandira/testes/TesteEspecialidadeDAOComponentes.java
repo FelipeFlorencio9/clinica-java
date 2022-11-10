@@ -2,9 +2,9 @@ package br.senai.sp.jandira.testes;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import java.util.ArrayList;
 
 public class TesteEspecialidadeDAOComponentes {
-
     public static void main(String[] args) {
 
         //Testando classe Especialidade
@@ -62,6 +62,6 @@ public class TesteEspecialidadeDAOComponentes {
                 
         EspecialidadeDAO.gravar(e2);
         
+     
     }
-
 }

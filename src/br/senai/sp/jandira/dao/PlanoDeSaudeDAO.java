@@ -119,6 +119,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
 //                dados[i][3] = p.getValidade();
             i++;
         }
+        
         // Definir um nome com as colunas da tabela
         String[] titulos = {"Código", "Nome da operadora", "Tipo do plano"};
 
