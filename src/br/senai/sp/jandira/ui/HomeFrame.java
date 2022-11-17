@@ -5,8 +5,7 @@ import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import java.awt.event.ActionEvent;
 
-import java.util.Arrays;
-import javax.swing.Icon;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -268,26 +267,6 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonHome.setBackground(corDeSelecao);
         previousPanel = panelHome;
         previousButton = buttonHome;
-    }
-    
-    private void ocultarUltimoPainel() {
-        previousPanel.setVisible(false);
-    }
-
-    private void ocultarTodosOsPaineis() {
-        panelHome.setVisible(false);
-        panelEspecialidade.setVisible(false);
-        panelPlanosDeSaude.setVisible(false);
-
-    }
-
-    private void pintarBotoesParaCorPadrao() {
-        buttonHome.setBackground(corPadrao);
-        buttonEspecialidade1.setBackground(corPadrao);
-        buttonPlanosDeSaude1.setBackground(corPadrao);
-        buttonAgenda.setBackground(corPadrao);
-        buttonMedicos.setBackground(corPadrao);
-        buttonSaida.setBackground(corPadrao);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

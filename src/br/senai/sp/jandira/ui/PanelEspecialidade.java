@@ -34,6 +34,7 @@ public class PanelEspecialidade extends javax.swing.JPanel {
         buttonAdicionarEspecialidade = new javax.swing.JButton();
         labelTableNome = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setLayout(null);
 
         tableEspecialidade.setModel(new javax.swing.table.DefaultTableModel(

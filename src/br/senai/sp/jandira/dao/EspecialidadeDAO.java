@@ -11,12 +11,14 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
 
     private Especialidade especialidade;
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
+    
     private final static String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade.txt";
     private final static Path PATH = Paths.get(ARQUIVO);
     private final static String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade_temp.txt";
@@ -162,12 +164,11 @@ public class EspecialidadeDAO {
                     JOptionPane.ERROR_MESSAGE);
         }
         
-        
         return false;
     }
    
     
-
+    
     public static Especialidade getEspecialidade(Integer codigo) {
 
         for (Especialidade e : especialidades) {
@@ -187,5 +188,24 @@ public class EspecialidadeDAO {
             }
         }
 
+    }
+    public static String[] getNomeDasEspecialidades(){
+        getListaDeEspecialidades();
+      
+        String[] nomeDasEspecialidades = new String[especialidades.size()];
+        int i = 0;
+        for(Especialidade e : especialidades){
+            if(i < especialidades.size()){
+                String nomeDaEspecialidade = e.getNome();
+                nomeDasEspecialidades[i] = nomeDaEspecialidade;
+                i++;
+                
+            }
+            else{
+                break;
+            }
+       
+        }
+         return nomeDasEspecialidades;
     }
 }

@@ -1,6 +1,8 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.Medico;
+import br.senai.sp.jandira.model.TipoOperacao;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -20,7 +22,10 @@ public class PanelMedico extends javax.swing.JPanel {
         buttonEditarMedico = new javax.swing.JButton();
         buttonDeletarMedico = new javax.swing.JButton();
         labelTableNome = new javax.swing.JLabel();
+        buttonAdicionarMedico = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setPreferredSize(new java.awt.Dimension(900, 410));
         setLayout(null);
 
         tableMedico.setModel(new javax.swing.table.DefaultTableModel(
@@ -41,7 +46,7 @@ public class PanelMedico extends javax.swing.JPanel {
 
         buttonEditarMedico.setBackground(new java.awt.Color(153, 204, 255));
         buttonEditarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editar.png"))); // NOI18N
-        buttonEditarMedico.setToolTipText("Editar plano de saúde selecionado.");
+        buttonEditarMedico.setToolTipText("Editar medico selecionado.");
         buttonEditarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditarMedicoActionPerformed(evt);
@@ -65,6 +70,17 @@ public class PanelMedico extends javax.swing.JPanel {
         labelTableNome.setText("Médicos");
         add(labelTableNome);
         labelTableNome.setBounds(40, 0, 210, 30);
+
+        buttonAdicionarMedico.setBackground(new java.awt.Color(153, 204, 255));
+        buttonAdicionarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/add.png"))); // NOI18N
+        buttonAdicionarMedico.setToolTipText("Adicionar novo plano de saúde");
+        buttonAdicionarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdicionarMedicoActionPerformed(evt);
+            }
+        });
+        add(buttonAdicionarMedico);
+        buttonAdicionarMedico.setBounds(810, 340, 70, 50);
     }// </editor-fold>//GEN-END:initComponents
     private void criarTableMedico() {
         tableMedico.setModel(MedicoDAO.getTableModel());
@@ -72,29 +88,42 @@ public class PanelMedico extends javax.swing.JPanel {
         tableMedico.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
         tableMedico.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableMedico.getColumnModel().getColumn(1).setPreferredWidth(300);
-        tableMedico.getColumnModel().getColumn(2).setPreferredWidth(300);
-        
+        tableMedico.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tableMedico.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tableMedico.getColumnModel().getColumn(3).setPreferredWidth(417);
         tableMedico.getTableHeader().setReorderingAllowed(false);
 
        
         tableMedico.setDefaultEditor(Object.class, null);
     }
     private void buttonEditarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarMedicoActionPerformed
-//
-//        linha = tableMedico.getSelectedRow();
-//
-//        if (linha != -1) {
-//            editar();
-//        } else {
-//            JOptionPane.showMessageDialog(
-//                this,
-//                "Por favor, selecione um plano de saúde para alterar.",
-//                "Planos de Saúde",
-//                JOptionPane.WARNING_MESSAGE);
-//        };
-    }//GEN-LAST:event_buttonEditarMedicoActionPerformed
 
+        linha = tableMedico.getSelectedRow();
+
+        if (linha != -1) {
+            editar();
+        } else {
+            JOptionPane.showMessageDialog(
+                this,
+                "Por favor, selecione um plano de saúde para alterar.",
+                "Planos de Saúde",
+                JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonEditarMedicoActionPerformed
+    private void editar(){
+        Medico medico = MedicoDAO.getMedico(getCodigo());
+        
+        DialogMedicos1 medicosDialog = 
+                new DialogMedicos1(
+                        null, 
+                        true,
+                        TipoOperacao.ALTERAR, 
+                        medico);
+        
+        medicosDialog.setVisible(true);
+        criarTableMedico();
+        
+    }
     private void buttonDeletarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarMedicoActionPerformed
         //Obtemos o indice da linha selecionada na tabela
         linha = tableMedico.getSelectedRow();
@@ -111,11 +140,22 @@ public class PanelMedico extends javax.swing.JPanel {
                 JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buttonDeletarMedicoActionPerformed
+
+    private void buttonAdicionarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarMedicoActionPerformed
+    DialogMedicos1 dialogMedico = new DialogMedicos1(
+                null, 
+                true, 
+                TipoOperacao.ADICIONAR, 
+                null);
+
+        dialogMedico.setVisible(true);
+        criarTableMedico();
+    }//GEN-LAST:event_buttonAdicionarMedicoActionPerformed
     private void excluir() {
         int resposta = JOptionPane.showConfirmDialog(
                 this,
                 "Você tem certeza que quer excluir o item selecionado?",
-                "Especialidade",
+                "Medico",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
         System.out.println(resposta);
@@ -130,6 +170,7 @@ public class PanelMedico extends javax.swing.JPanel {
             return Integer.valueOf(codigoStr);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAdicionarMedico;
     private javax.swing.JButton buttonDeletarMedico;
     private javax.swing.JButton buttonEditarMedico;
     private javax.swing.JLabel labelTableNome;

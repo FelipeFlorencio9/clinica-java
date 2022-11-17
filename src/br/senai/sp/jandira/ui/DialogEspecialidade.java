@@ -7,7 +7,7 @@ package br.senai.sp.jandira.ui;
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.TipoOperacao;
-import javax.swing.JDialog;
+
 import javax.swing.JOptionPane;
 /**
  *

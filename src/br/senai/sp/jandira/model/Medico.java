@@ -16,7 +16,6 @@ public class Medico extends Pessoa {
     public Medico(Integer codigoInterno, String crm){
         this.codigoInterno = codigoInterno;
         this.crm = crm;
-        this.especialidades = especialidades;
         
     }
     public Integer getCodigoInterno() {
