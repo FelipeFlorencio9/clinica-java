@@ -1,7 +1,3 @@
-106;Cardiologia ;Identificca e trata das doenças que acometem o coração bem como os outros componentes do sistema circulatório.
-108;Pediatria;Cuida de crianças e trato de menores.
-109;Dermatologia;Atua em procedimentos clínicos, cirúrgicos e cosmiátricos. 
-110;Nefrologia;Dedicado(a) ao diagnóstico e tratamento clínico das doenças do sistema urinário, principalmente relacionadas ao rim, além de doenças sistêmicas.
-110;dfc;cvb
-111;cvcb;cvb
-112;werwe;werwe
+107;Cardiologia ;Identificca e trata das doenças que acometem o coração bem como os outros componentes do sistema circulatório.
+109;Pediatria;Cuida de crianças e trato de menores.
+110;Dermatologia;Atua em procedimentos clínicos, cirúrgicos e cosmiátricos. 

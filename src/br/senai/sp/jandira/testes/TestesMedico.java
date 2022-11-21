@@ -26,7 +26,7 @@ public class TestesMedico {
         
         //Tentando colocar propriedades no medico de teste.
         ArrayList<Especialidade> especialidadesDoMedicoDeTeste = new ArrayList<Especialidade>();
-        m1.setEspecialidades(especialidadesDoMedicoDeTeste);
+//        m1.setEspecialidades(especialidadesDoMedicoDeTeste);
        
         //Visualizando No Console o objeto.
         System.out.println(m1.getCodigoInterno());

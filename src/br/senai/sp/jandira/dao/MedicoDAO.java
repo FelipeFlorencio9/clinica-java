@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,10 +73,16 @@ public class MedicoDAO {
                         Integer.valueOf(linhaVetor[0]),
                         linhaVetor[1]);
                 medicoViewInPanel.setNome(linhaVetor[2]);
-
-                ArrayList<Especialidade> especialidadesForPanel = new ArrayList<>();
-
-                medicoViewInPanel.setEspecialidades(especialidadesForPanel);
+                
+                if(linhaVetor[6] != null){
+                    String[] especialidades = linhaVetor[6].split("&");
+                    ArrayList<String> especialidadesDoMedico = new ArrayList<>();
+                    especialidadesDoMedico.addAll(Arrays.asList(especialidades));
+                    medicoViewInPanel.setEspecialidades(especialidadesDoMedico);
+                } else {
+                    medicoViewInPanel.setEspecialidades(null);
+                }
+                
 
                 medicos.add(medicoViewInPanel);
 
@@ -177,4 +184,45 @@ public class MedicoDAO {
 
         return null;
     }
+    public static String[] getEspecialidadesDoMedico(Integer codigo){
+        
+        for (Medico m : medicos) {
+            if (m.getCodigoInterno().equals(codigo)) {
+                break;
+            }
+        }
+        ArrayList<String> especialidadesDoMedico = new ArrayList<>();
+        try {
+            BufferedReader br = Files.newBufferedReader(PATH);
+
+            String linha = br.readLine();
+
+            while (linha != null && !linha.isEmpty()) {
+
+                String[] linhaVetor = linha.split(";");
+
+                if(linhaVetor[6] != null){
+                    String[] especialidades = linhaVetor[6].split("&");
+                    
+                    especialidadesDoMedico.addAll(Arrays.asList(especialidades));
+                } else {
+                    especialidadesDoMedico.add("Sem especialidade.");
+                }a
+                linha = br.readLine();
+
+            }
+            br.close();
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ocorreu um erro ao abrir o arquivo.",
+                    "Erro de leitura",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return null;
+    
+    };
+
+   
 }

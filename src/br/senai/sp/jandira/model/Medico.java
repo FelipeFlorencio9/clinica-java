@@ -7,7 +7,7 @@ public class Medico extends Pessoa {
     private static int contador = 000;
     private Integer codigoInterno;
     private String crm;
-    private ArrayList<Especialidade> especialidades;
+    private ArrayList<String> especialidades;
 
     public Medico(){
         atualizarCodigo();
@@ -22,11 +22,11 @@ public class Medico extends Pessoa {
         return codigoInterno;
     }
 
-    public ArrayList<Especialidade> getEspecialidades() {
+    public ArrayList<String> getEspecialidades() {
         return especialidades;
     }
 
-    public void setEspecialidades(ArrayList<Especialidade> especialidades) {
+    public void setEspecialidades(ArrayList<String> especialidades) {
         this.especialidades = especialidades;
     }
 

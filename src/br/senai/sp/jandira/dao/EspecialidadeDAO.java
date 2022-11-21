@@ -189,8 +189,7 @@ public class EspecialidadeDAO {
         }
 
     }
-    public static String[] getNomeDasEspecialidades(){
-        getListaDeEspecialidades();
+    public static String[] getListaNomeDasEspecialidades(){
       
         String[] nomeDasEspecialidades = new String[especialidades.size()];
         int i = 0;

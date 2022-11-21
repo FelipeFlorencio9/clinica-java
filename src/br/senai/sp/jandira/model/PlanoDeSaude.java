@@ -32,7 +32,7 @@ public class PlanoDeSaude {
         this.codigo = codigo;
         this.operadora = operadora;
         this.tipoDoPlano = tipoDoPlano;
-        this.contador = this.codigo++;
+        PlanoDeSaude.contador = this.codigo++;
     }
 
     private void atualizarCodigo() {
