@@ -17,7 +17,7 @@ public class TestesMedico {
         m1.setNome("Fernando");
         m1.setTelefone("98546-4564");
         m1.setEmail("fernandomedico@gmail.com");
-        m1.setDataDeNascimento(LocalDate.of(1990, Month.MARCH, 28));
+//        m1.setDataDeNascimento(LocalDate.of(1990, Month.MARCH, 28));
         
         
        
@@ -29,7 +29,7 @@ public class TestesMedico {
 //        m1.setEspecialidades(especialidadesDoMedicoDeTeste);
        
         //Visualizando No Console o objeto.
-        System.out.println(m1.getCodigoInterno());
+        System.out.println(m1.getCodigo());
         System.out.println(m1.getNome());
         System.out.println(m1.getTelefone());
         System.out.println(m1.getEmail());

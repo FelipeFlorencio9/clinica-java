@@ -9,18 +9,18 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
-public class DialogMedicos1 extends javax.swing.JDialog {
+public class DialogMedicos extends javax.swing.JDialog {
 
     private TipoOperacao tipoOperacao;
     private Medico medico;
 
     private DefaultListModel<String> especialidadesListModel = new DefaultListModel();
     private ArrayList<String> nomeDasEspecialidades = new ArrayList<>();
-    
+    private List<String> selecionadas;
     private DefaultListModel especialidadesSelecionadasModel = new DefaultListModel();
     private ArrayList<String> especialidadesSelecionadas = new ArrayList<>();
 
-    public DialogMedicos1(
+    public DialogMedicos(
             java.awt.Frame parent,
             boolean modal,
             TipoOperacao tipoOperacao,
@@ -37,7 +37,7 @@ public class DialogMedicos1 extends javax.swing.JDialog {
     }
 
     private void preencherFormulario() {
-        textFieldCodigo.setText(medico.getCodigoInterno().toString());
+        textFieldCodigo.setText(medico.getCodigo().toString());
         textFieldCrm.setText(medico.getCrm());
         textFieldNomeDoMedico.setText(medico.getNome());
         labelHome.setText("Médicos - " + tipoOperacao);
@@ -318,7 +318,21 @@ public class DialogMedicos1 extends javax.swing.JDialog {
     }//GEN-LAST:event_textFieldEmailActionPerformed
 
     private void jButtonRemoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverEspecialidadeActionPerformed
-        // TODO add your handling code here:
+       selecionadas = jListSelecionados.getSelectedValuesList();
+
+        for (String e : selecionadas) {
+            nomeDasEspecialidades.add(e);
+            especialidadesListModel.addElement(e);
+            especialidadesSelecionadas.remove(e);
+            especialidadesSelecionadasModel.removeElement(e);
+        }
+        especialidadesListModel.clear();
+        especialidadesListModel.addAll(nomeDasEspecialidades);
+        especialidadesSelecionadasModel.clear();
+        especialidadesSelecionadasModel.addAll(especialidadesSelecionadas);
+        
+        jListSelecionados.setModel(especialidadesSelecionadasModel);
+        jListEspecialidades.setModel(especialidadesListModel);
     }//GEN-LAST:event_jButtonRemoverEspecialidadeActionPerformed
 
     private void jButtonAdicionarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarEspecialidadeActionPerformed
@@ -326,14 +340,26 @@ public class DialogMedicos1 extends javax.swing.JDialog {
 
         for (String e : selecionadas) {
             especialidadesSelecionadas.add(e);
+            especialidadesSelecionadasModel.addElement(e);
+             nomeDasEspecialidades.remove(e);
+            especialidadesListModel.removeElement(e);
         }
-        
-        especialidadesSelecionadasModel.clear();
-        especialidadesSelecionadasModel.addAll(especialidadesSelecionadas);
-        
-        jListSelecionados.setModel(especialidadesSelecionadasModel);
+        limparModels();
+        atualizarArray();
+        refazerModelo();
     }//GEN-LAST:event_jButtonAdicionarEspecialidadeActionPerformed
-
+    private void atualizarArray(){
+        especialidadesListModel.addAll(nomeDasEspecialidades);
+        especialidadesSelecionadasModel.addAll(especialidadesSelecionadas);
+    }
+    private void refazerModelo(){
+        jListEspecialidades.setModel(especialidadesListModel);
+        jListSelecionados.setModel(especialidadesSelecionadasModel);
+    }
+    private void limparModels(){
+        especialidadesListModel.clear();
+        especialidadesSelecionadasModel.clear();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonSalvar;
