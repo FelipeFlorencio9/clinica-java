@@ -58,7 +58,7 @@ public class MedicoDAO {
         } 
     }
 
-    public static void gravar(Medico medico) {
+    public static void inserir(Medico medico) {
         medicos.add(medico);
         try {
             BufferedWriter bw = Files.newBufferedWriter(
@@ -66,7 +66,7 @@ public class MedicoDAO {
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
 
-            String novoMedico = medico.getMedicoSeparadoPorPontoEVirgula();
+            String novoMedico = medico.getSeparadoPorPontoEVirgula();
 
             bw.write(novoMedico);
             bw.newLine();
@@ -95,7 +95,7 @@ public class MedicoDAO {
             dados[i][0] = m.getCodigo().toString();
             dados[i][1] = m.getCrm();
             dados[i][2] = m.getNome();
-            dados[i][3] = m.getEspecialidades();
+            dados[i][3] = m.getEspecialidadesSeparadoPorVirgula();
             i++;
         }
 
@@ -106,7 +106,48 @@ public class MedicoDAO {
         
         return tableModelMedico;
     }
-
+    
+    public static void atualizar(Medico medico) {
+        for (Medico m : medicos) {
+            if (m.getCodigo().equals(medico.getCodigo())) {
+                medicos.set(medicos.indexOf(m), medico);
+                break;
+            }
+            atualizarArquivo();
+        }
+        
+    }
+    public static void  atualizarArquivo(){
+      
+        File arquivoAtual = new File(ARQUIVO);
+        File arquivoTemp = new File(ARQUIVO_TEMP);
+        
+        try {
+            arquivoTemp.createNewFile();
+            
+            BufferedWriter bwTemp = Files.newBufferedWriter(
+                    PATH_TEMP,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            
+            for (Medico m : medicos){
+                bwTemp.write(m.getSeparadoPorPontoEVirgula());
+                bwTemp.newLine();
+            }
+            bwTemp.close();
+            arquivoAtual.delete();
+            arquivoTemp.renameTo(arquivoAtual);
+            
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Ocorreu um erro ao criar o arquivo!",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }
     public static boolean excluir(Integer codigo) {
 
         for (Medico m : medicos) {
@@ -135,7 +176,7 @@ public class MedicoDAO {
 
             //Iterar a lista para adicionar os planos no arquivo temporário
             for (Medico m : medicos) {
-                bwTemp.write(m.getMedicoSeparadoPorPontoEVirgula());
+                bwTemp.write(m.getStringMedicoForPanel());
                 bwTemp.newLine();
             }
 

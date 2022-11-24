@@ -1,2 +1,4 @@
-001;120;Fernando;98875-4568;fernando@teste.com;1992,23,21;Cardiologia&Pediatria
-002;125;Clara;95645-8754;clara@teste.com;1992,23,21;Pedagoga
+120;4567;Fernando;4565-4564;fernando@yahoo.com;12/03/2022;Cardiologia&Pediatra
+125;9567;Clara;4455-8892;clara@yahoo.com;12/06/1875;Podologa
+
+1;cvbc;cvbcv;cvbvc;cvbcv;cvbcvb;[Pediatria]

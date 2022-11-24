@@ -175,9 +175,6 @@ public class DialogPlanosDeSaude extends javax.swing.JDialog {
         } else {
             atualizar();
         }
-        
-        
-        
 
     }//GEN-LAST:event_buttonSalvarActionPerformed
     private void atualizar(){

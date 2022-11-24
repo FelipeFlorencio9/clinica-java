@@ -52,6 +52,9 @@ public class Medico extends Pessoa {
     }
 
     public ArrayList<String> getEspecialidades() {
+        String especialidadesStr = getEspecialidadesSeparadoPorVirgula();
+        String [] especialidadesSeparadas = especialidadesStr.split("%");
+        especialidades.addAll(Arrays.asList(especialidadesSeparadas));
         return especialidades;
     }
 
@@ -72,7 +75,7 @@ public class Medico extends Pessoa {
         System.out.printf("Olá, eu sou o Médico %s, tudo bem?\n", super.getNome());
     }
 
-    public String getMedicoSeparadoPorPontoEVirgula() {
+    public String getStringMedicoForPanel() {
         String medicoStr = this.codigo + ";" + this.crm + ";" + this.especialidades;
         return medicoStr;
     }
@@ -82,8 +85,21 @@ public class Medico extends Pessoa {
         this.codigo = contador;
     }
 
-    public String getEspecialidadesComoTextoUnico() {
-        String especialidadesStr = this.especialidades.toString();
-        return especialidadesStr;
+    public String getEspecialidadesSeparadoPorVirgula() {
+        String strEspecialidades = this.especialidades.toString();
+        String[] strEspecialidadesDividida = strEspecialidades.split("&");
+        String strEspecialidadeSeparadaPorVirgula = String.join(" ,", strEspecialidadesDividida);
+        return strEspecialidadeSeparadaPorVirgula;   
+    }
+    
+    
+    @Override
+    public String getSeparadoPorPontoEVirgula(){
+        String medicoStr = 
+                this.codigo + ";" + 
+                this.crm + ";" +
+                super.getSeparadoPorPontoEVirgula() +
+                this.especialidades.toString();
+        return medicoStr;
     }
 }
