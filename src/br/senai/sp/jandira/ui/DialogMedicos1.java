@@ -2,14 +2,12 @@ package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.MedicoDAO;
-import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.TipoOperacao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
 
 public class DialogMedicos1 extends javax.swing.JDialog {
 
@@ -48,9 +46,8 @@ public class DialogMedicos1 extends javax.swing.JDialog {
 
     private void carregarTodasAsEspecialidades() {
         carregarEspecialidadesDoBanco();
-        carregarEspecialidadesDoMedico(medico.getCodigoInterno());
-       
-       
+//        carregarEspecialidadesDoMedico(medico.getCodigoInterno());
+
         jListEspecialidades.setModel(especialidadesListModel);
         especialidadesSelecionadasModel.clear();
         
@@ -64,10 +61,6 @@ public class DialogMedicos1 extends javax.swing.JDialog {
         jListEspecialidades.setModel(especialidadesListModel);
     }
     
-    private void carregarEspecialidadesDoMedico(Integer codigoInterno){
-       MedicoDAO.getEspecialidadesDoMedico(codigoInterno);
-       
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -1,1 +1,2 @@
 001;120;Fernando;98875-4568;fernando@teste.com;1992,23,21;Cardiologia&Pediatria
+002;125;Clara;95645-8754;clara@teste.com;1992,23,21;Pedagoga

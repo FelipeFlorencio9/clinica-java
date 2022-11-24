@@ -3,11 +3,16 @@ package br.senai.sp.jandira.ui;
 import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.TipoOperacao;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class PanelMedico extends javax.swing.JPanel {
     int linha;
+    private DefaultTableModel tableMedicoModel = new DefaultTableModel();
+    private ArrayList<Medico> medicos = new ArrayList<>();
+    private String[] titulos = {"Código", "CRM", "Nome do(a) Médico(a)", "Especialidades"};
     public PanelMedico() {
         initComponents();
         criarTableMedico();
@@ -83,6 +88,7 @@ public class PanelMedico extends javax.swing.JPanel {
         buttonAdicionarMedico.setBounds(810, 340, 70, 50);
     }// </editor-fold>//GEN-END:initComponents
     private void criarTableMedico() {
+        
         tableMedico.setModel(MedicoDAO.getTableModel());
         
         tableMedico.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -96,6 +102,8 @@ public class PanelMedico extends javax.swing.JPanel {
        
         tableMedico.setDefaultEditor(Object.class, null);
     }
+ 
+  
     private void buttonEditarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarMedicoActionPerformed
 
         linha = tableMedico.getSelectedRow();

@@ -7,12 +7,12 @@ public class Pessoa {
     private String nome;
     private String telefone;
     private String email;
-    private LocalDate dataDeNascimento;
+    private String dataDeNascimento;
     
     public Pessoa(){
         
     }
-    public Pessoa(String nome, String telefone, String email, LocalDate dataDeNascimento){
+    public Pessoa(String nome, String telefone, String email, String dataDeNascimento){
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -42,11 +42,11 @@ public class Pessoa {
         this.email = email;
     }
 
-    public LocalDate getDataDeNascimento() {
+    public String getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+    public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
     

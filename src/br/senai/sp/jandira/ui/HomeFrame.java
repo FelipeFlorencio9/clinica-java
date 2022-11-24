@@ -316,7 +316,6 @@ public class HomeFrame extends javax.swing.JFrame {
                 ALTURA);
         getContentPane().add(panelEspecialidade);
         panelEspecialidade.setVisible(false);
-        
         panelMedico = new PanelMedico();
         panelMedico.setBounds(
                 X_POSITION,

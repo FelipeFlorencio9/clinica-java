@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,14 +29,37 @@ public class MedicoDAO {
 
     }
 
-    public MedicoDAO(Medico medico) {
-        this.medico = medico;
+    public static void getListaDeMedicos() {
+        try {
+            BufferedReader br = Files.newBufferedReader(PATH);
+            String linha = br.readLine();
+            while (linha != null && !linha.isEmpty()) {
+
+                String[] linhaVetor = linha.split(";");
+                Medico novoMedico = new Medico(
+                        Integer.valueOf(linhaVetor[0]),
+                        linhaVetor[1],
+                        linhaVetor[2],
+                        linhaVetor[3],
+                        linhaVetor[4],
+                        linhaVetor[5],
+                        linhaVetor[6]);
+                medicos.add(novoMedico);
+                linha = br.readLine();
+            }
+            br.close();
+            
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ocorreu um erro ao abrir o arquivo.",
+                    "Erro de leitura",
+                    JOptionPane.ERROR_MESSAGE);
+        } 
     }
 
     public static void gravar(Medico medico) {
         medicos.add(medico);
-
-        //Gravar plano de saúde no arquivo
         try {
             BufferedWriter bw = Files.newBufferedWriter(
                     PATH,
@@ -58,59 +82,17 @@ public class MedicoDAO {
 
     }
 
-    public static void getListaDeMedicos() {
-        try {
-            BufferedReader br = Files.newBufferedReader(PATH);
-
-            String linha = br.readLine();
-
-            while (linha != null && !linha.isEmpty()) {
-
-                //Medico inteiro com Especialidade Junta
-                String[] linhaVetor = linha.split(";");
-
-                Medico medicoViewInPanel = new Medico(
-                        Integer.valueOf(linhaVetor[0]),
-                        linhaVetor[1]);
-                medicoViewInPanel.setNome(linhaVetor[2]);
-                
-                if(linhaVetor[6] != null){
-                    String[] especialidades = linhaVetor[6].split("&");
-                    ArrayList<String> especialidadesDoMedico = new ArrayList<>();
-                    especialidadesDoMedico.addAll(Arrays.asList(especialidades));
-                    medicoViewInPanel.setEspecialidades(especialidadesDoMedico);
-                } else {
-                    medicoViewInPanel.setEspecialidades(null);
-                }
-                
-
-                medicos.add(medicoViewInPanel);
-
-                linha = br.readLine();
-
-            }
-            br.close();
-
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Ocorreu um erro ao abrir o arquivo.",
-                    "Erro de leitura",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
     public static ArrayList<Medico> listarTodos() {
         return medicos;
     }
 
     public static DefaultTableModel getTableModel() {
-
+        
         Object[][] dados = new Object[medicos.size()][4];
 
         int i = 0;
         for (Medico m : medicos) {
-            dados[i][0] = m.getCodigoInterno();
+            dados[i][0] = m.getCodigo().toString();
             dados[i][1] = m.getCrm();
             dados[i][2] = m.getNome();
             dados[i][3] = m.getEspecialidades();
@@ -120,14 +102,15 @@ public class MedicoDAO {
         String[] titulos = {"Código", "CRM", "Nome do(a) Médico(a)", "Especialidades"};
 
         DefaultTableModel tableModelMedico = new DefaultTableModel(dados, titulos);
-
+    
+        
         return tableModelMedico;
     }
 
     public static boolean excluir(Integer codigo) {
 
         for (Medico m : medicos) {
-            if (m.getCodigoInterno().equals(codigo)) {
+            if (m.getCodigo().equals(codigo)) {
                 medicos.remove(m);
                 break;
             }
@@ -177,17 +160,18 @@ public class MedicoDAO {
     public static Medico getMedico(Integer codigo) {
 
         for (Medico m : medicos) {
-            if (m.getCodigoInterno().equals(codigo)) {
+            if (m.getCodigo().equals(codigo)) {
                 return m;
             }
         }
 
         return null;
     }
-    public static String[] getEspecialidadesDoMedico(Integer codigo){
-        
+
+    public static String[] getEspecialidadesDoMedico(Integer codigo) {
+
         for (Medico m : medicos) {
-            if (m.getCodigoInterno().equals(codigo)) {
+            if (m.getCodigo().equals(codigo)) {
                 break;
             }
         }
@@ -201,14 +185,13 @@ public class MedicoDAO {
 
                 String[] linhaVetor = linha.split(";");
 
-                if(linhaVetor[6] != null){
+                if (linhaVetor[6] != null) {
                     String[] especialidades = linhaVetor[6].split("&");
-                    
+
                     especialidadesDoMedico.addAll(Arrays.asList(especialidades));
                 } else {
                     especialidadesDoMedico.add("Sem especialidade.");
-                }a
-                linha = br.readLine();
+                }
 
             }
             br.close();
@@ -221,8 +204,8 @@ public class MedicoDAO {
                     JOptionPane.ERROR_MESSAGE);
         }
         return null;
-    
-    };
 
-   
+    }
+;
+
 }
