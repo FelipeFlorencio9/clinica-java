@@ -99,7 +99,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         linha = tablePlanosDeSaude.getSelectedRow();
         
         if (linha != -1){
-         editar();
+             editar();
         } else{
             JOptionPane.showMessageDialog(
                     this, 

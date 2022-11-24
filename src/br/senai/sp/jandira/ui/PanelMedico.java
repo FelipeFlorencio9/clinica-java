@@ -113,8 +113,8 @@ public class PanelMedico extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(
                 this,
-                "Por favor, selecione um plano de saúde para alterar.",
-                "Planos de Saúde",
+                "Por favor, selecione um médico para alterar.",
+                "Médico",
                 JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_buttonEditarMedicoActionPerformed

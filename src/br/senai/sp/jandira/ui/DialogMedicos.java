@@ -439,7 +439,7 @@ public class DialogMedicos extends javax.swing.JDialog {
     }
     
     private void atualizar(){
-       medico.setNome(textFieldNomeDoMedico.getText());
+        medico.setNome(textFieldNomeDoMedico.getText());
         medico.setCrm(textFieldCrm.getText());
         medico.setTelefone(textFieldTelefone.getText());
         medico.setEmail(textFieldEmail.getText());
