@@ -1,17 +1,29 @@
 package br.senai.sp.jandira.view;
 
-import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
+import br.senai.sp.jandira.controller.IController;
+import br.senai.sp.jandira.controller.MedicoController;
 import br.senai.sp.jandira.model.dao.MedicoDAO;
 import br.senai.sp.jandira.model.entity.Especialidade;
 import br.senai.sp.jandira.model.entity.Medico;
 import br.senai.sp.jandira.model.entity.TipoOperacao;
+
+
+//import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
+//import br.senai.sp.jandira.model.dao.MedicoDAO;
+//import br.senai.sp.jandira.model.entity.Especialidade;
+//import br.senai.sp.jandira.model.entity.Medico;
+//import br.senai.sp.jandira.model.entity.TipoOperacao;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
 
 public class DialogMedicosForm extends javax.swing.JDialog {
 
@@ -23,7 +35,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     private List<String> selecionadas;
     private DefaultListModel especialidadesSelecionadasModel = new DefaultListModel();
     private ArrayList<Especialidade> especialidadesSelecionadas = new ArrayList<>();
-
+  
     public DialogMedicosForm(
             java.awt.Frame parent,
             boolean modal,
@@ -91,7 +103,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     public String getTextFieldDataDeNascimento(){
         return textFieldDataDeNascimento.toString();
     }
-    public ArrayList<Especialidade> getEspecialidadesSelecionadas(){
+    public ArrayList<Object> getEspecialidadesSelecionadas(){
         return especialidadesSelecionadas;
     }
     @SuppressWarnings("unchecked")
@@ -330,7 +342,9 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-         if (tipoOperacao == TipoOperacao.ADICIONAR){
+        MedicoController controller = new MedicoController();
+        controller.executa(evt, tipoOperacao.ADICIONAR);
+        if (tipoOperacao == TipoOperacao.ADICIONAR){
             gravar();
         } else {
             atualizar();
@@ -397,7 +411,6 @@ public class DialogMedicosForm extends javax.swing.JDialog {
         especialidadesListModel.clear();
         especialidadesSelecionadasModel.clear();
     }
-    
     
     private void gravar(){
         Medico medico = new Medico();
@@ -469,7 +482,6 @@ public class DialogMedicosForm extends javax.swing.JDialog {
         return true;
 
     }
-    
     private void atualizar(){
         medico.setNome(textFieldNomeDoMedico.getText());
         medico.setCrm(textFieldCrm.getText());
