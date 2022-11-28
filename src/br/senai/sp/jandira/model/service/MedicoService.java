@@ -15,7 +15,7 @@ public class MedicoService {
           this.dao = new MedicoDAO();
       }
     
-    public void salvar(Medico medico) {
+    public boolean inserir(Medico medico) {
          dao = new MedicoDAO();
          Integer codigo = entity.getCodigo();
          String crm = entity.getCrm();
@@ -25,6 +25,10 @@ public class MedicoService {
          String dataDeNascimento = entity.getDataDeNascimento();
          ArrayList<Especialidade> especialidades = entity.getEspecialidades();
          Medico novoMedico = new Medico(codigo, crm, nome, telefone, email, dataDeNascimento, especialidades);
-         MedicoDAO.adicionarMedico(novoMedico);
+         MedicoDAO.inserirMedico(novoMedico);
       }
+
+    public void inserir(Medico medico) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

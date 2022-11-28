@@ -343,7 +343,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         MedicoController controller = new MedicoController();
-        controller.executa(evt, tipoOperacao.ADICIONAR);
+        controller.executa(evt, TipoOperacao.ADICIONAR);
         if (tipoOperacao == TipoOperacao.ADICIONAR){
             gravar();
         } else {
@@ -423,7 +423,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
         
         if (validarCadastro()) {
 
-            MedicoDAO.adicionarMedico(medico);
+            MedicoDAO.inserirMedico(medico);
 
             JOptionPane.showMessageDialog(
                     this,

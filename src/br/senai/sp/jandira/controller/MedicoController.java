@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.controller;
 
+import br.senai.sp.jandira.model.dao.MedicoDAO;
 import br.senai.sp.jandira.model.service.MedicoService;
 import br.senai.sp.jandira.model.entity.Medico;
 import br.senai.sp.jandira.model.entity.TipoOperacao;
@@ -19,16 +20,22 @@ public class MedicoController implements IController {
         medico.setTelefone(dialog.getTextFieldTelefone());
         medico.setDataDeNascimento(dialog.getTextFieldDataDeNascimento());
 //      medico.setEspecialidades(dialog.);
-                
+        transferirMedico(medico);       
+    }
+    
+    private static boolean transferirMedico(Medico medico){
+        MedicoService service = new MedicoService();
+        
+        if (tipoOperacao == TipoOperacao.ADICIONAR){
+            service.inserir(medico);
+        } else {
+            service.atualizar(medico);
+        }
+          return resultado;
+      }
     }
     private Medico medicoATransferir (Medico medico){
           MedicoService service =  new MedicoService();
           TipoOperacao tipoOperacao;
-          if (tipoOperacao == TipoOperacao.ADICIONAR){
-            tipoOperacao = TipoOperacao.ADICIONAR
-        } else {
-            atualizar();
-        }
-          return resultado;
-      }
+         
 }

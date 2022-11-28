@@ -27,7 +27,7 @@ public class MedicoDAO {
     public MedicoDAO() {
     }
     
-    public static void adicionarMedico(Medico medico) {
+    public static void inserirMedico(Medico medico) {
         medicos.add(medico);
 
         try {
