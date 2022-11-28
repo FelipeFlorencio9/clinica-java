@@ -1,7 +1,7 @@
 package br.senai.sp.jandira.testes;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
-import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
+import br.senai.sp.jandira.model.entity.Especialidade;
 import java.util.ArrayList;
 
 public class TesteEspecialidadeDAOComponentes {

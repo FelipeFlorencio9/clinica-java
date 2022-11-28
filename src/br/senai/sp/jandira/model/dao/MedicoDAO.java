@@ -1,7 +1,7 @@
-package br.senai.sp.jandira.dao;
+package br.senai.sp.jandira.model.dao;
 
-import br.senai.sp.jandira.model.Especialidade;
-import br.senai.sp.jandira.model.Medico;
+import br.senai.sp.jandira.model.entity.Especialidade;
+import br.senai.sp.jandira.model.entity.Medico;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -40,6 +40,7 @@ public class MedicoDAO {
             
             bw.write(novoPlanoDeSaude);
             bw.newLine();
+            //FINALLY
             bw.close();
 
         } catch (IOException ex) {
@@ -123,7 +124,7 @@ public class MedicoDAO {
         
     }
     
-    public static void getTodosOsMedicos() {
+    public static void getListaDeMedicos() {
         try {
             BufferedReader br = Files.newBufferedReader(PATH);
 
@@ -223,44 +224,6 @@ public class MedicoDAO {
         
     }
     
-    public static String[] getEspecialidadesDoMedico(Integer codigo) {
-
-        for (Medico m : medicos) {
-            if (m.getCodigo().equals(codigo)) {
-                break;
-            }
-        }
-        ArrayList<String> especialidadesDoMedico = new ArrayList<>();
-        try {
-            BufferedReader br = Files.newBufferedReader(PATH);
-
-            String linha = br.readLine();
-
-            while (linha != null && !linha.isEmpty()) {
-
-                String[] linhaVetor = linha.split(";");
-
-                if (linhaVetor[6] != null) {
-                    String[] especialidades = linhaVetor[6].split("&");
-
-                    especialidadesDoMedico.addAll(Arrays.asList(especialidades));
-                } else {
-                    especialidadesDoMedico.add("Sem especialidade.");
-                }
-
-            }
-            br.close();
-
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Ocorreu um erro ao abrir o arquivo.",
-                    "Erro de leitura",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        return null;
-
-    }
-;
+    
 
 }

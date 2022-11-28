@@ -1,10 +1,10 @@
 
 package br.senai.sp.jandira.testes;
 
-import br.senai.sp.jandira.model.Gênero;
-import br.senai.sp.jandira.model.Medico;
-import br.senai.sp.jandira.model.Paciente;
-import br.senai.sp.jandira.model.Pessoa;
+import br.senai.sp.jandira.model.entity.Gênero;
+import br.senai.sp.jandira.model.entity.Medico;
+import br.senai.sp.jandira.model.entity.Paciente;
+import br.senai.sp.jandira.model.entity.Pessoa;
 
 public class TesteHeranca {
     

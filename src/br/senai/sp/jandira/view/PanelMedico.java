@@ -1,8 +1,8 @@
 package br.senai.sp.jandira.view;
 
-import br.senai.sp.jandira.dao.MedicoDAO;
-import br.senai.sp.jandira.model.Medico;
-import br.senai.sp.jandira.model.TipoOperacao;
+import br.senai.sp.jandira.model.dao.MedicoDAO;
+import br.senai.sp.jandira.model.entity.Medico;
+import br.senai.sp.jandira.model.entity.TipoOperacao;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -121,8 +121,8 @@ public class PanelMedico extends javax.swing.JPanel {
     private void editar(){
         Medico medico = MedicoDAO.getMedico(getCodigo());
         
-        DialogMedicos medicosDialog = 
-                new DialogMedicos(
+        DialogMedicosForm medicosDialog = 
+                new DialogMedicosForm(
                         null, 
                         true,
                         TipoOperacao.ALTERAR, 
@@ -150,7 +150,7 @@ public class PanelMedico extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonDeletarMedicoActionPerformed
 
     private void buttonAdicionarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarMedicoActionPerformed
-    DialogMedicos dialogMedico = new DialogMedicos(
+    DialogMedicosForm dialogMedico = new DialogMedicosForm(
                 null, 
                 true, 
                 TipoOperacao.ADICIONAR, 

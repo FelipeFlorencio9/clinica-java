@@ -1,6 +1,6 @@
 package br.senai.sp.jandira.testes;
 
-import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
+import br.senai.sp.jandira.model.dao.PlanoDeSaudeDAO;
 
 public class TesteDaoXpto {
 

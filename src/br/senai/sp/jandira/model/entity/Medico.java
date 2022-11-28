@@ -1,4 +1,4 @@
-package br.senai.sp.jandira.model;
+package br.senai.sp.jandira.model.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ public class Medico extends Pessoa {
     private static int contador = 000;
     private Integer codigo;
     private String crm;
-    private ArrayList<String> especialidades = new ArrayList<>();
+    private ArrayList<Especialidade> especialidades = new ArrayList<>();
 
     public Medico() {
         atualizarCodigo();
@@ -27,7 +27,7 @@ public class Medico extends Pessoa {
             String telefone,
             String email,
             String dataDeNascimento,
-            ArrayList<String> especialidades) {
+            ArrayList<Especialidade> especialidades) {
 
         super(nome, telefone, email, dataDeNascimento);
         this.codigo = codigo;
@@ -45,11 +45,11 @@ public class Medico extends Pessoa {
         return codigo;
     }
 
-    public ArrayList<String> getEspecialidades() {
+    public ArrayList<Especialidade> getEspecialidades() {
         return especialidades;
     }
 
-    public void setEspecialidades(ArrayList<String> especialidades) {
+    public void setEspecialidades(ArrayList<Especialidade> especialidades) {
         this.especialidades = especialidades;
     }
 

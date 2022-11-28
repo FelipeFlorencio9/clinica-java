@@ -4,9 +4,9 @@
  */
 package br.senai.sp.jandira.view;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
-import br.senai.sp.jandira.model.Especialidade;
-import br.senai.sp.jandira.model.TipoOperacao;
+import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
+import br.senai.sp.jandira.model.entity.Especialidade;
+import br.senai.sp.jandira.model.entity.TipoOperacao;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 

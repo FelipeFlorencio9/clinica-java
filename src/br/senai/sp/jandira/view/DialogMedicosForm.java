@@ -1,18 +1,19 @@
 package br.senai.sp.jandira.view;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
-import br.senai.sp.jandira.dao.MedicoDAO;
-import br.senai.sp.jandira.model.Especialidade;
-import br.senai.sp.jandira.model.Medico;
-import br.senai.sp.jandira.model.TipoOperacao;
+import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
+import br.senai.sp.jandira.model.dao.MedicoDAO;
+import br.senai.sp.jandira.model.entity.Especialidade;
+import br.senai.sp.jandira.model.entity.Medico;
+import br.senai.sp.jandira.model.entity.TipoOperacao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
-public class DialogMedicos extends javax.swing.JDialog {
+public class DialogMedicosForm extends javax.swing.JDialog {
 
     private TipoOperacao tipoOperacao;
     private Medico medico;
@@ -21,9 +22,9 @@ public class DialogMedicos extends javax.swing.JDialog {
     private ArrayList<String> nomeDasEspecialidades = new ArrayList<>();
     private List<String> selecionadas;
     private DefaultListModel especialidadesSelecionadasModel = new DefaultListModel();
-    private ArrayList<String> especialidadesSelecionadas = new ArrayList<>();
+    private ArrayList<Especialidade> especialidadesSelecionadas = new ArrayList<>();
 
-    public DialogMedicos(
+    public DialogMedicosForm(
             java.awt.Frame parent,
             boolean modal,
             TipoOperacao tipoOperacao,
@@ -90,7 +91,7 @@ public class DialogMedicos extends javax.swing.JDialog {
     public String getTextFieldDataDeNascimento(){
         return textFieldDataDeNascimento.toString();
     }
-    public ArrayList<String> getEspecialidadesSelecionadas(){
+    public ArrayList<Especialidade> getEspecialidadesSelecionadas(){
         return especialidadesSelecionadas;
     }
     @SuppressWarnings("unchecked")
@@ -206,7 +207,7 @@ public class DialogMedicos extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jListSelecionados);
 
         panelHome.add(jScrollPane1);
-        jScrollPane1.setBounds(290, 200, 140, 146);
+        jScrollPane1.setBounds(290, 200, 140, 170);
 
         labelCodigo1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         labelCodigo1.setForeground(new java.awt.Color(51, 153, 255));
@@ -222,7 +223,7 @@ public class DialogMedicos extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jListEspecialidades);
 
         panelHome.add(jScrollPane2);
-        jScrollPane2.setBounds(30, 200, 140, 146);
+        jScrollPane2.setBounds(30, 200, 140, 170);
 
         labelCodigo3.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         labelCodigo3.setForeground(new java.awt.Color(51, 153, 255));
@@ -367,9 +368,10 @@ public class DialogMedicos extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonRemoverEspecialidadeActionPerformed
 
     private void jButtonAdicionarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarEspecialidadeActionPerformed
+        
         List<String> selecionadas = jListEspecialidades.getSelectedValuesList();
 
-        for (String e : selecionadas) {
+        for (Especialidade e : selecionadas) {
             especialidadesSelecionadas.add(e);
             especialidadesSelecionadasModel.addElement(e);
              nomeDasEspecialidades.remove(e);

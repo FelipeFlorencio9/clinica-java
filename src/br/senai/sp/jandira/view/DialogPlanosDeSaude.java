@@ -4,9 +4,9 @@
  */
 package br.senai.sp.jandira.view;
 
-import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
-import br.senai.sp.jandira.model.PlanoDeSaude;
-import br.senai.sp.jandira.model.TipoOperacao;
+import br.senai.sp.jandira.model.dao.PlanoDeSaudeDAO;
+import br.senai.sp.jandira.model.entity.PlanoDeSaude;
+import br.senai.sp.jandira.model.entity.TipoOperacao;
 import javax.swing.JOptionPane;
 
 public class DialogPlanosDeSaude extends javax.swing.JDialog {

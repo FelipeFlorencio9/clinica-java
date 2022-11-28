@@ -1,6 +1,6 @@
-package br.senai.sp.jandira.dao;
+package br.senai.sp.jandira.model.dao;
 
-import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.entity.Especialidade;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;

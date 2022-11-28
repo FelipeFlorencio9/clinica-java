@@ -1,8 +1,8 @@
 package br.senai.sp.jandira.testes;
 
 import java.util.ArrayList;
-import br.senai.sp.jandira.model.Especialidade;
-import br.senai.sp.jandira.model.PlanoDeSaude;
+import br.senai.sp.jandira.model.entity.Especialidade;
+import br.senai.sp.jandira.model.entity.PlanoDeSaude;
 
 public class TesteArrayList {
 

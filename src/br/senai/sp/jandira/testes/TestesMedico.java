@@ -1,9 +1,9 @@
 
 package br.senai.sp.jandira.testes;
 
-import br.senai.sp.jandira.dao.MedicoDAO;
-import br.senai.sp.jandira.model.Especialidade;
-import br.senai.sp.jandira.model.Medico;
+import br.senai.sp.jandira.model.dao.MedicoDAO;
+import br.senai.sp.jandira.model.entity.Especialidade;
+import br.senai.sp.jandira.model.entity.Medico;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class TestesMedico {
     public static void main(String[] args) {
         
         
-        MedicoDAO.getTodosOsMedicos();
+        MedicoDAO.getListaDeMedicos();
         
         //Persistindo um médico como pessoa
         

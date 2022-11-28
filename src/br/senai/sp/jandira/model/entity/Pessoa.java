@@ -1,5 +1,5 @@
 
-package br.senai.sp.jandira.model;
+package br.senai.sp.jandira.model.entity;
 
 import java.time.LocalDate;
 

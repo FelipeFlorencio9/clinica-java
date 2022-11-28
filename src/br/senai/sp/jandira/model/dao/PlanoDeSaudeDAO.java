@@ -1,7 +1,7 @@
-package br.senai.sp.jandira.dao;
+package br.senai.sp.jandira.model.dao;
 
 import java.util.ArrayList;
-import br.senai.sp.jandira.model.PlanoDeSaude;
+import br.senai.sp.jandira.model.entity.PlanoDeSaude;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
