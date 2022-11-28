@@ -1,9 +1,11 @@
-package br.senai.sp.jandira.ui;
+package br.senai.sp.jandira.view;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
+import br.senai.sp.jandira.model.Medico;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 
 import javax.swing.JButton;
@@ -260,7 +262,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private void initModelTables() {
         PlanoDeSaudeDAO.getListaPlanosDeSaude();
         EspecialidadeDAO.getListaDeEspecialidades();
-        MedicoDAO.getListaDeMedicos();
+        MedicoDAO.getTodosOsMedicos();
     }
 
     private void passHomeToDefault() {

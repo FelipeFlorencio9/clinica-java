@@ -1,6 +1,5 @@
 package br.senai.sp.jandira.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,22 +27,17 @@ public class Medico extends Pessoa {
             String telefone,
             String email,
             String dataDeNascimento,
-            String especialidades) {
+            ArrayList<String> especialidades) {
 
         super(nome, telefone, email, dataDeNascimento);
         this.codigo = codigo;
         this.crm = crm;
+        this.especialidades = especialidades;
         super.setNome(nome);
         super.setTelefone(telefone);
         super.setEmail(email);
         super.setDataDeNascimento(dataDeNascimento);
-            
-        if (especialidades != null) {
-            String[] novasEspecialidades = especialidades.split("%");
-            this.especialidades.addAll(Arrays.asList(novasEspecialidades));
-        } else {
-            this.especialidades = null;
-        }
+        
        
     }
 
@@ -52,9 +46,6 @@ public class Medico extends Pessoa {
     }
 
     public ArrayList<String> getEspecialidades() {
-        String especialidadesStr = getEspecialidadesSeparadoPorVirgula();
-        String [] especialidadesSeparadas = especialidadesStr.split("%");
-        especialidades.addAll(Arrays.asList(especialidadesSeparadas));
         return especialidades;
     }
 
@@ -85,12 +76,7 @@ public class Medico extends Pessoa {
         this.codigo = contador;
     }
 
-    public String getEspecialidadesSeparadoPorVirgula() {
-        String strEspecialidades = this.especialidades.toString();
-        String[] strEspecialidadesDividida = strEspecialidades.split("&");
-        String strEspecialidadeSeparadaPorVirgula = String.join(" ,", strEspecialidadesDividida);
-        return strEspecialidadeSeparadaPorVirgula;   
-    }
+    
     
     
     @Override

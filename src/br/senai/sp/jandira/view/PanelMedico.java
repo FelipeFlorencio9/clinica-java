@@ -1,4 +1,4 @@
-package br.senai.sp.jandira.ui;
+package br.senai.sp.jandira.view;
 
 import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.model.Medico;
@@ -15,7 +15,7 @@ public class PanelMedico extends javax.swing.JPanel {
     private String[] titulos = {"Código", "CRM", "Nome do(a) Médico(a)", "Especialidades"};
     public PanelMedico() {
         initComponents();
-        criarTableMedico();
+        criarTabelaDeMedicos();
     }
 
     @SuppressWarnings("unchecked")
@@ -87,8 +87,8 @@ public class PanelMedico extends javax.swing.JPanel {
         add(buttonAdicionarMedico);
         buttonAdicionarMedico.setBounds(810, 340, 70, 50);
     }// </editor-fold>//GEN-END:initComponents
-    private void criarTableMedico() {
-        
+    private void criarTabelaDeMedicos() {
+      
         tableMedico.setModel(MedicoDAO.getTableModel());
         
         tableMedico.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -129,7 +129,7 @@ public class PanelMedico extends javax.swing.JPanel {
                         medico);
         
         medicosDialog.setVisible(true);
-        criarTableMedico();
+        
         
     }
     private void buttonDeletarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarMedicoActionPerformed
@@ -157,7 +157,7 @@ public class PanelMedico extends javax.swing.JPanel {
                 null);
 
         dialogMedico.setVisible(true);
-        criarTableMedico();
+        criarTabelaDeMedicos();
     }//GEN-LAST:event_buttonAdicionarMedicoActionPerformed
     private void excluir() {
         int resposta = JOptionPane.showConfirmDialog(
@@ -169,14 +169,15 @@ public class PanelMedico extends javax.swing.JPanel {
         System.out.println(resposta);
         
         if (resposta == 0) {
-            MedicoDAO.excluir(getCodigo());
-            criarTableMedico();
+            MedicoDAO.removerMedico(getCodigo());
+            criarTabelaDeMedicos();
         }
     }
-     private Integer getCodigo(){
+    private Integer getCodigo(){
             String codigoStr = tableMedico.getValueAt(linha, 0).toString();
             return Integer.valueOf(codigoStr);
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionarMedico;
     private javax.swing.JButton buttonDeletarMedico;

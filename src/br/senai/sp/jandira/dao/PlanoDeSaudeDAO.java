@@ -34,7 +34,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
         this.planoDeSaude = planoDeSaude;
     }
 
-    public static void gravar(PlanoDeSaude planoDeSaude) {
+    public static void inserirPlanoDeSaude(PlanoDeSaude planoDeSaude) {
         planos.add(planoDeSaude);
     
         //Gravar plano de saúde no arquivo
@@ -204,6 +204,7 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
         }
         
     }
+    
     public static void  atualizarArquivo(){
         //Reconstruir um arquivo atualizado, ou seja, 
         //sem o plano que foi removido

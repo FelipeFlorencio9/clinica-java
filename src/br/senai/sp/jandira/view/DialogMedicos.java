@@ -1,7 +1,8 @@
-package br.senai.sp.jandira.ui;
+package br.senai.sp.jandira.view;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.TipoOperacao;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 public class DialogMedicos extends javax.swing.JDialog {
 
@@ -39,29 +41,58 @@ public class DialogMedicos extends javax.swing.JDialog {
 
     private void preencherFormulario() {
         textFieldCodigo.setText(medico.getCodigo().toString());
-        textFieldCodigo.setText(medico.getCrm());
+        textFieldCrm.setText(medico.getCrm());
         textFieldNomeDoMedico.setText(medico.getNome());
+        textFieldEmail.setText(medico.getEmail());
+        textFieldDataDeNascimento.setText(medico.getDataDeNascimento());
+        textFieldTelefone.setText(medico.getTelefone());
+        adicionarEspecialidadesDoMedicoAoModelo();
+        refazerModelo();
         labelHome.setText("Médicos - " + tipoOperacao);
         labelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/img/editar.png")));
     }
-
+    private void adicionarEspecialidadesDoMedicoAoModelo(){
+ 
+        especialidadesSelecionadasModel.clear();
+        especialidadesSelecionadasModel.addAll(medico.getEspecialidades());
+        System.out.println(medico.getEspecialidades());
+       
+    }
     private void carregarTodasAsEspecialidades() {
         carregarEspecialidadesDoBanco();
-//        carregarEspecialidadesDoMedico(medico.getCodigoInterno());
+//      carregarEspecialidadesDoMedico(medico.getCodigoInterno());
 
-        jListEspecialidades.setModel(especialidadesListModel);
-        especialidadesSelecionadasModel.clear();
-        
-//        String[] especialidadesDoMedico = MedicoDAO.getEspecialidadesDoMedico();
-        jListSelecionados.setModel(especialidadesSelecionadasModel);
-    }
+//      especialidadesSelecionadasModel.clear();
+//        
+////      String[] especialidadesDoMedico = MedicoDAO.getEspecialidadesDoMedico();
+//        jListSelecionados.setModel(especialidadesSelecionadasModel);
+        }
     private void carregarEspecialidadesDoBanco(){
         String[] especialidadesDoBanco = EspecialidadeDAO.getListaNomeDasEspecialidades();
+        limparModels();
         nomeDasEspecialidades.addAll(Arrays.asList(especialidadesDoBanco));
         especialidadesListModel.addAll(nomeDasEspecialidades);
         jListEspecialidades.setModel(especialidadesListModel);
     }
     
+    public String getTextFieldCRM(){
+        return textFieldCrm.toString();
+    }
+    public String getTextFieldNomeDoMedico(){
+        return textFieldNomeDoMedico.toString();
+    }
+    public String getTextFieldTelefone(){
+        return textFieldTelefone.toString();
+    }
+    public String getTextFieldEmail(){
+        return textFieldEmail.toString();
+    }
+    public String getTextFieldDataDeNascimento(){
+        return textFieldDataDeNascimento.toString();
+    }
+    public ArrayList<String> getEspecialidadesSelecionadas(){
+        return especialidadesSelecionadas;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,7 +125,6 @@ public class DialogMedicos extends javax.swing.JDialog {
         jButtonAdicionarEspecialidade = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(678, 558));
         getContentPane().setLayout(null);
 
         panelApp.setBackground(new java.awt.Color(255, 255, 255));
@@ -378,7 +408,7 @@ public class DialogMedicos extends javax.swing.JDialog {
         
         if (validarCadastro()) {
 
-            MedicoDAO.inserir(medico);
+            MedicoDAO.adicionarMedico(medico);
 
             JOptionPane.showMessageDialog(
                     this,
@@ -446,7 +476,7 @@ public class DialogMedicos extends javax.swing.JDialog {
         medico.setDataDeNascimento(textFieldDataDeNascimento.getText());
         medico.setEspecialidades(especialidadesSelecionadas);
         if(validarCadastro()){
-            MedicoDAO.atualizar(medico);
+            MedicoDAO.atualizarMedico(medico);
             JOptionPane.showMessageDialog(
                 null, 
                 "Plano de Saúde atualizado com sucesso.",
@@ -456,6 +486,8 @@ public class DialogMedicos extends javax.swing.JDialog {
         }
         
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonSalvar;
@@ -484,4 +516,8 @@ public class DialogMedicos extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldNomeDoMedico;
     private javax.swing.JTextField textFieldTelefone;
     // End of variables declaration//GEN-END:variables
+
+    private void addSelectionEspecialidadesInModel() {
+        
+    }
 }

@@ -1,4 +1,2 @@
-120;4567;Fernando;4565-4564;fernando@yahoo.com;12/03/2022;Cardiologia&Pediatra
-125;9567;Clara;4455-8892;clara@yahoo.com;12/06/1875;Podologa
-
-1;cvbc;cvbcv;cvbvc;cvbcv;cvbcvb;[Pediatria]
+100;5555;Pedro da Silva;9999999;pedro@uol;15-05-1990;107&109
+103;55425;Fernanda;45125754;este@uol;15-80-2022;109
