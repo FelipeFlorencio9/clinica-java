@@ -27,7 +27,7 @@ public class MedicoDAO {
     public MedicoDAO() {
     }
     
-    public static void inserirMedico(Medico medico) {
+    public boolean inserirMedico(Medico medico) {
         medicos.add(medico);
 
         try {
@@ -42,6 +42,7 @@ public class MedicoDAO {
             bw.newLine();
             //FINALLY
             bw.close();
+            return true;
 
         } catch (IOException ex) {
             JOptionPane.showConfirmDialog(
@@ -49,7 +50,9 @@ public class MedicoDAO {
                     "Houve um problema ao tentar abrir o arquivo.",
                     "Erro ao gravar.",
                     JOptionPane.ERROR_MESSAGE);
+            return false;
         }
+        
         
     }
     
