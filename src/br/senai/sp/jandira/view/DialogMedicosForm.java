@@ -2,6 +2,7 @@ package br.senai.sp.jandira.view;
 
 import br.senai.sp.jandira.controller.IController;
 import br.senai.sp.jandira.controller.MedicoController;
+import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.dao.MedicoDAO;
 import br.senai.sp.jandira.model.entity.Especialidade;
 import br.senai.sp.jandira.model.entity.Medico;
@@ -34,7 +35,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     private ArrayList<String> nomeDasEspecialidades = new ArrayList<>();
     private List<String> selecionadas;
     private DefaultListModel especialidadesSelecionadasModel = new DefaultListModel();
-    private ArrayList<Especialidade> especialidadesSelecionadas = new ArrayList<>();
+    private ArrayList<String> especialidadesSelecionadas = new ArrayList<>();
   
     public DialogMedicosForm(
             java.awt.Frame parent,
@@ -103,7 +104,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     public String getTextFieldDataDeNascimento(){
         return textFieldDataDeNascimento.toString();
     }
-    public ArrayList<Object> getEspecialidadesSelecionadas(){
+    public ArrayList<String> getEspecialidadesSelecionadas(){
         return especialidadesSelecionadas;
     }
     @SuppressWarnings("unchecked")
@@ -385,7 +386,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
         
         List<String> selecionadas = jListEspecialidades.getSelectedValuesList();
 
-        for (Especialidade e : selecionadas) {
+        for (String e : selecionadas) {
             especialidadesSelecionadas.add(e);
             especialidadesSelecionadasModel.addElement(e);
              nomeDasEspecialidades.remove(e);
@@ -422,8 +423,8 @@ public class DialogMedicosForm extends javax.swing.JDialog {
         medico.setEspecialidades(especialidadesSelecionadas);
         
         if (validarCadastro()) {
-
-            MedicoDAO.inserirMedico(medico);
+            MedicoDAO dao = new MedicoDAO();
+            dao.inserirMedico(medico);
 
             JOptionPane.showMessageDialog(
                     this,

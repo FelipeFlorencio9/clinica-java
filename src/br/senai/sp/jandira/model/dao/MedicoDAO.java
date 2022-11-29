@@ -1,6 +1,5 @@
 package br.senai.sp.jandira.model.dao;
 
-import br.senai.sp.jandira.model.entity.Especialidade;
 import br.senai.sp.jandira.model.entity.Medico;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,18 +11,20 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class MedicoDAO {
 
-    private static final ArrayList<Medico> medicos = new ArrayList<>();
+//    private static final String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\medico.txt";
+//    private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\medico_temp.txt";
+//    private static final Path PATH = Paths.get(ARQUIVO);
+//    private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
+    
     private static final String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\medico.txt";
     private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\medico_temp.txt";
     private static final Path PATH = Paths.get(ARQUIVO);
     private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
-
     public MedicoDAO() {
     }
     
@@ -141,7 +142,6 @@ public class MedicoDAO {
                 String[] vetorDeEspecialidades = linhaVetor[6].split("&");
                 especialidades.addAll(Arrays.asList(vetorDeEspecialidades));
  
-                
                 Medico novoMedico = new Medico(
                         Integer.valueOf(linhaVetor[0]),
                         linhaVetor[1],
@@ -182,7 +182,7 @@ public class MedicoDAO {
             dados[i][0] = m.getCodigo().toString();
             dados[i][1] = m.getCrm();
             dados[i][2] = m.getNome();
-            for(Especialidade e :m.getEspecialidades())
+            for(String e :m.getEspecialidades())
             dados[i][3] = m.getEspecialidades();
             i++;
         }

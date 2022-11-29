@@ -4,7 +4,6 @@ import br.senai.sp.jandira.model.dao.MedicoDAO;
 import br.senai.sp.jandira.model.entity.Especialidade;
 import br.senai.sp.jandira.model.entity.Medico;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class MedicoService {
 
@@ -23,7 +22,7 @@ public class MedicoService {
         String telefone = entity.getDataDeNascimento();
         String email = entity.getEmail();
         String dataDeNascimento = entity.getDataDeNascimento();
-        ArrayList<Especialidade> especialidades = entity.getEspecialidades();
+        ArrayList<String> especialidades = entity.getEspecialidades();
         Medico novoMedico = new Medico(codigo, crm, nome, telefone, email, dataDeNascimento, especialidades);
         boolean resposta;
         resposta = dao.inserirMedico(novoMedico);

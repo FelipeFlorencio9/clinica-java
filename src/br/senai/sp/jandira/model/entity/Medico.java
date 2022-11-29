@@ -8,11 +8,10 @@ public class Medico extends Pessoa {
     private static int contador = 000;
     private Integer codigo;
     private String crm;
-    private ArrayList<Especialidade> especialidades = new ArrayList<>();
+    private ArrayList<String> especialidades = new ArrayList<>();
+ 
 
-    public Medico() {
-        atualizarCodigo();
-    }
+    
 
     public Medico(Integer codigo, String crm) {
         this.codigo = codigo;
@@ -21,13 +20,7 @@ public class Medico extends Pessoa {
     }
 
     public Medico(
-            Integer codigo,
-            String crm,
-            String nome,
-            String telefone,
-            String email,
-            String dataDeNascimento,
-            ArrayList<Especialidade> especialidades) {
+            Integer codigo, String crm, String nome, String telefone, String email, String dataDeNascimento, ArrayList<String> especialidades) {
 
         super(nome, telefone, email, dataDeNascimento);
         this.codigo = codigo;
@@ -41,15 +34,19 @@ public class Medico extends Pessoa {
        
     }
 
+    public Medico() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public Integer getCodigo() {
         return codigo;
     }
 
-    public ArrayList<Especialidade> getEspecialidades() {
+    public ArrayList<String> getEspecialidades() {
         return especialidades;
     }
 
-    public void setEspecialidades(ArrayList<Especialidade> especialidades) {
+    public void setEspecialidades(ArrayList<String> especialidades) {
         this.especialidades = especialidades;
     }
 
