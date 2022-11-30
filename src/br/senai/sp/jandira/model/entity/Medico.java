@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.model.entity;
 
+import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,7 +9,7 @@ public class Medico extends Pessoa {
     private static int contador = 000;
     private Integer codigo;
     private String crm;
-    private ArrayList<String> especialidades = new ArrayList<>();
+    private ArrayList<Especialidade> especialidades = new ArrayList<>();
  
 
     
@@ -20,7 +21,7 @@ public class Medico extends Pessoa {
     }
 
     public Medico(
-            Integer codigo, String crm, String nome, String telefone, String email, String dataDeNascimento, ArrayList<String> especialidades) {
+            Integer codigo, String crm, String nome, String telefone, String email, String dataDeNascimento, ArrayList<Especialidade> especialidades) {
 
         super(nome, telefone, email, dataDeNascimento);
         this.codigo = codigo;
@@ -41,12 +42,26 @@ public class Medico extends Pessoa {
     public Integer getCodigo() {
         return codigo;
     }
-
-    public ArrayList<String> getEspecialidades() {
+    
+    public ArrayList<Especialidade> getEspecialidades() {
         return especialidades;
     }
-
-    public void setEspecialidades(ArrayList<String> especialidades) {
+//    public ArrayList<Especialidade> getObjetosEspecialidades(){
+//        ArrayList<Especialidade> objetosEspecialidades = new ArrayList<>();
+//        for(Especialidade e : especialidades){
+//         objetosEspecialidades.add(EspecialidadeDAO.getEspecialidade(e));
+//        }
+//        return objetosEspecialidades;
+//    }
+//    public String getEspecialidadesSeparadasPorVirgula(){
+//        String linhaDeEspecialidades = "";
+//       
+//        for(Especialidade e : getObjetosEspecialidades()){
+//            linhaDeEspecialidades = e.getNome() + ";";
+//        }
+//        return linhaDeEspecialidades;
+//    }
+    public void setEspecialidades(ArrayList<Especialidade> especialidades) {
         this.especialidades = especialidades;
     }
 

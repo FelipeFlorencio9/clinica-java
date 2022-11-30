@@ -32,10 +32,10 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     private Medico medico;
 
     private DefaultListModel<String> especialidadesListModel = new DefaultListModel();
-    private ArrayList<String> nomeDasEspecialidades = new ArrayList<>();
+    private ArrayList<Especialidade> nomeDasEspecialidades = new ArrayList<>();
     private List<String> selecionadas;
     private DefaultListModel especialidadesSelecionadasModel = new DefaultListModel();
-    private ArrayList<String> especialidadesSelecionadas = new ArrayList<>();
+    private ArrayList<Especialidade> especialidadesSelecionadas = new ArrayList<>();
   
     public DialogMedicosForm(
             java.awt.Frame parent,
@@ -69,7 +69,10 @@ public class DialogMedicosForm extends javax.swing.JDialog {
  
         especialidadesSelecionadasModel.clear();
         especialidadesSelecionadasModel.addAll(medico.getEspecialidades());
-        System.out.println(medico.getEspecialidades());
+        for(Especialidade e : medico.getEspecialidades()){
+            System.out.println(e.getNome());
+        }
+        
        
     }
     private void carregarTodasAsEspecialidades() {
@@ -82,10 +85,14 @@ public class DialogMedicosForm extends javax.swing.JDialog {
 //        jListSelecionados.setModel(especialidadesSelecionadasModel);
         }
     private void carregarEspecialidadesDoBanco(){
-        String[] especialidadesDoBanco = EspecialidadeDAO.getListaNomeDasEspecialidades();
+        
+        for(Especialidade e : EspecialidadeDAO.getListaDeEspecialidades()){
+            nomeDasEspecialidades.add(e);
+        }
+        for(Especialidade e : nomeDasEspecialidades){
+            especialidadesListModel.addElement(e.getCodigo().toString() + " - " + e.getNome());
+        }
         limparModels();
-        nomeDasEspecialidades.addAll(Arrays.asList(especialidadesDoBanco));
-        especialidadesListModel.addAll(nomeDasEspecialidades);
         jListEspecialidades.setModel(especialidadesListModel);
     }
     
@@ -104,7 +111,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     public String getTextFieldDataDeNascimento(){
         return textFieldDataDeNascimento.toString();
     }
-    public ArrayList<String> getEspecialidadesSelecionadas(){
+    public ArrayList<Especialidade> getEspecialidadesSelecionadas(){
         return especialidadesSelecionadas;
     }
     @SuppressWarnings("unchecked")
@@ -367,19 +374,19 @@ public class DialogMedicosForm extends javax.swing.JDialog {
     private void jButtonRemoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverEspecialidadeActionPerformed
        selecionadas = jListSelecionados.getSelectedValuesList();
 
-        for (String e : selecionadas) {
-            nomeDasEspecialidades.add(e);
-            especialidadesListModel.addElement(e);
-            especialidadesSelecionadas.remove(e);
-            especialidadesSelecionadasModel.removeElement(e);
-        }
-        especialidadesListModel.clear();
-        especialidadesListModel.addAll(nomeDasEspecialidades);
-        especialidadesSelecionadasModel.clear();
-        especialidadesSelecionadasModel.addAll(especialidadesSelecionadas);
-        
-        jListSelecionados.setModel(especialidadesSelecionadasModel);
-        jListEspecialidades.setModel(especialidadesListModel);
+//        for (String e : selecionadas) {
+//            nomeDasEspecialidades.add(e);
+//            especialidadesListModel.addElement(e);
+//            especialidadesSelecionadas.remove(e);
+//            especialidadesSelecionadasModel.removeElement(e);
+//        }
+//        especialidadesListModel.clear();
+//        especialidadesListModel.addAll(nomeDasEspecialidades);
+//        especialidadesSelecionadasModel.clear();
+//        especialidadesSelecionadasModel.addAll(especialidadesSelecionadas);
+//        
+//        jListSelecionados.setModel(especialidadesSelecionadasModel);
+//        jListEspecialidades.setModel(especialidadesListModel);
     }//GEN-LAST:event_jButtonRemoverEspecialidadeActionPerformed
 
     private void jButtonAdicionarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarEspecialidadeActionPerformed
@@ -387,7 +394,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
         List<String> selecionadas = jListEspecialidades.getSelectedValuesList();
 
         for (String e : selecionadas) {
-            especialidadesSelecionadas.add(e);
+//            especialidadesSelecionadas.add(e);
             especialidadesSelecionadasModel.addElement(e);
              nomeDasEspecialidades.remove(e);
             especialidadesListModel.removeElement(e);
@@ -401,7 +408,7 @@ public class DialogMedicosForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCrmActionPerformed
     private void atualizarArray(){
-        especialidadesListModel.addAll(nomeDasEspecialidades);
+//        especialidadesListModel.addAll(nomeDasEspecialidades);;
         especialidadesSelecionadasModel.addAll(especialidadesSelecionadas);
     }
     private void refazerModelo(){

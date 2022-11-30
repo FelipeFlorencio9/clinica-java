@@ -19,11 +19,15 @@ public class EspecialidadeDAO {
     private Especialidade especialidade;
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
     
-    private final static String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade.txt";
+    private final static String ARQUIVO = "/home/felipedeoliveiraflorencio/Documentos/clinica-java/build/classes/br/senai/sp/jandira/repositorios/especialidade.txt";
     private final static Path PATH = Paths.get(ARQUIVO);
-    private final static String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade_temp.txt";
+    private final static String ARQUIVO_TEMP = "/home/felipedeoliveiraflorencio/Documentos/clinica-java/build/classes/br/senai/sp/jandira/repositorios/especialidade_temp.txt";
     private final static Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
-
+    
+//     private final static String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade.txt";
+//    private final static Path PATH = Paths.get(ARQUIVO);
+//    private final static String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\especialidade_temp.txt";
+//    private final static Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
     //ARQUIVO é o caminho e o PATH é o caminho convertido
     public EspecialidadeDAO() {
 
@@ -64,7 +68,7 @@ public class EspecialidadeDAO {
         this.especialidade = especialidade;
     }
 
-    public static void getListaDeEspecialidades() {
+    public static ArrayList<Especialidade> getListaDeEspecialidades() {
         try {
             BufferedReader br = Files.newBufferedReader(PATH);
  
@@ -86,7 +90,7 @@ public class EspecialidadeDAO {
                 
             }
             br.close();
-            
+            return especialidades;
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
                     null, 
@@ -94,6 +98,7 @@ public class EspecialidadeDAO {
                     "Erro de leitura",
                     JOptionPane.ERROR_MESSAGE);
         }
+        return null;
     }
 
     public static DefaultTableModel getTableModel() {
@@ -176,8 +181,7 @@ public class EspecialidadeDAO {
                 return e;
             }
         }
-
-        return null;
+       return null;
     }
 
     public static void atualizar(Especialidade especialidade) {
@@ -190,7 +194,7 @@ public class EspecialidadeDAO {
 
     }
     public static String[] getListaNomeDasEspecialidades(){
-      
+        
         String[] nomeDasEspecialidades = new String[especialidades.size()];
         int i = 0;
         for(Especialidade e : especialidades){

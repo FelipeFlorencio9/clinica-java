@@ -20,11 +20,15 @@ public class PlanoDeSaudeDAO { //simular nosso banco de dados
     private PlanoDeSaude planoDeSaude;
     private static ArrayList<PlanoDeSaude> planos = new ArrayList<>();
 
-    private static final String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\plano_de_saude.txt";
-    private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\plano_de_saude_temp.txt";
+//    private static final String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\plano_de_saude.txt";
+//    private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\plano_de_saude_temp.txt";
+//    private static final Path PATH = Paths.get(ARQUIVO);
+//    private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
+
+    private static final String ARQUIVO = "/home/felipedeoliveiraflorencio/Documentos/clinica-java/build/classes/br/senai/sp/jandira/repositorios/plano_de_saude.txt";
+    private static final String ARQUIVO_TEMP = "/home/felipedeoliveiraflorencio/Documentos/clinica-java/build/classes/br/senai/sp/jandira/repositorios/plano_de_saude_temp.txt";
     private static final Path PATH = Paths.get(ARQUIVO);
     private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
-
     //Construtor
     public PlanoDeSaudeDAO() {
 

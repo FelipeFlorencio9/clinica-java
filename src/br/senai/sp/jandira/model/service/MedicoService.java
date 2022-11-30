@@ -22,7 +22,7 @@ public class MedicoService {
         String telefone = entity.getDataDeNascimento();
         String email = entity.getEmail();
         String dataDeNascimento = entity.getDataDeNascimento();
-        ArrayList<String> especialidades = entity.getEspecialidades();
+        ArrayList<Integer> especialidades = entity.getEspecialidades();
         Medico novoMedico = new Medico(codigo, crm, nome, telefone, email, dataDeNascimento, especialidades);
         boolean resposta;
         resposta = dao.inserirMedico(novoMedico);

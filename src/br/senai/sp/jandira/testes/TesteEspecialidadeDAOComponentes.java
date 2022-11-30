@@ -2,6 +2,7 @@ package br.senai.sp.jandira.testes;
 
 import br.senai.sp.jandira.model.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.entity.Especialidade;
+import br.senai.sp.jandira.model.entity.Medico;
 import java.util.ArrayList;
 
 public class TesteEspecialidadeDAOComponentes {
@@ -61,7 +62,36 @@ public class TesteEspecialidadeDAOComponentes {
         System.out.println(""); 
                 
         EspecialidadeDAO.gravar(e2);
+        ArrayList<Especialidade> especialidadesDoMedico = new ArrayList<>();
+        especialidadesDoMedico.add(e);
+       especialidadesDoMedico.add(e2);
+//        especialidadesDoMedico.add(e3);
+        Medico as = new Medico(45, "teste");
+        as.setEspecialidades(especialidadesDoMedico);
+        System.out.println(as.getEspecialidades().get(0).getNome() + ";" + as.getEspecialidades().get(1).getNome());
         
-     
+        for(Especialidade a : especialidadesDoMedico){
+            System.out.printf(a.getNome() + "; ");
+            System.out.println("LINE");
+        }
+        String item = "";
+        int tamanho = especialidadesDoMedico.size();
+        if(tamanho == 1){
+              item = especialidadesDoMedico.get(0).getNome() + ".";
+        }
+        System.out.println(item);
+//        for(Especialidade ghj : especialidadesDoMedico){
+//            if(tamanho == 1){
+//              
+//                break;
+//            } else if (tamanho == 2){
+//                item = item.concat(" e " + ghj.getNome());
+//            }
+//           
+//            System.out.println(item);
+//            System.out.println("LINE");
+//        }
+         item = item.replaceFirst("e", "");
+         System.out.println(item);
     }
 }

@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.model.dao;
 
+import br.senai.sp.jandira.model.entity.Especialidade;
 import br.senai.sp.jandira.model.entity.Medico;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,14 +21,15 @@ public class MedicoDAO {
 //    private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\medico_temp.txt";
 //    private static final Path PATH = Paths.get(ARQUIVO);
 //    private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
-    
-    private static final String ARQUIVO = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\medico.txt";
-    private static final String ARQUIVO_TEMP = "C:\\Users\\22282108\\Documents\\NetBeansProjects\\clinica-java\\src\\br\\senai\\sp\\jandira\\repositorios\\medico_temp.txt";
+    private static final String ARQUIVO = "/home/felipedeoliveiraflorencio/Documentos/clinica-java/build/classes/br/senai/sp/jandira/repositorios/medico.txt";
+    private static final String ARQUIVO_TEMP = "/home/felipedeoliveiraflorencio/Documentos/clinica-java/build/classes/br/senai/sp/jandira/repositorios/medico_temp.txt";
     private static final Path PATH = Paths.get(ARQUIVO);
     private static final Path PATH_TEMP = Paths.get(ARQUIVO_TEMP);
+    private static ArrayList<Medico> medicos = new ArrayList<>();
+   
     public MedicoDAO() {
     }
-    
+
     public boolean inserirMedico(Medico medico) {
         medicos.add(medico);
 
@@ -38,7 +40,7 @@ public class MedicoDAO {
                     StandardOpenOption.WRITE);
 
             String novoPlanoDeSaude = medico.getSeparadoPorPontoEVirgula();
-            
+
             bw.write(novoPlanoDeSaude);
             bw.newLine();
             //FINALLY
@@ -53,10 +55,9 @@ public class MedicoDAO {
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        
-        
+
     }
-    
+
     public static Medico getMedico(Integer id) {
 
         for (Medico m : medicos) {
@@ -67,7 +68,7 @@ public class MedicoDAO {
 
         return null;
     }
-    
+
     public static void removerMedico(Integer id) {
 
         for (Medico m : medicos) {
@@ -116,7 +117,7 @@ public class MedicoDAO {
         }
 
     }
-    
+
     public static void atualizarMedico(Medico medico) {
         for (Medico m : medicos) {
             if (m.getCodigo().equals(medico.getCodigo())) {
@@ -125,23 +126,25 @@ public class MedicoDAO {
             }
             atualizarArquivo();
         }
-        
+
     }
-    
+
     public static void getListaDeMedicos() {
         try {
             BufferedReader br = Files.newBufferedReader(PATH);
 
             String linha = br.readLine();
 
-            while(linha != null && !linha.isEmpty()){
-              
+            while (linha != null && !linha.isEmpty()) {
+
                 String[] linhaVetor = linha.split(";");
-                ArrayList<String> especialidades = new ArrayList<>();
+                ArrayList<Integer> especialidades = new ArrayList<Integer>();
                 
                 String[] vetorDeEspecialidades = linhaVetor[6].split("&");
-                especialidades.addAll(Arrays.asList(vetorDeEspecialidades));
- 
+               for(String e : vetorDeEspecialidades){
+                   especialidades.add(Integer.getInteger(e));
+               }
+
                 Medico novoMedico = new Medico(
                         Integer.valueOf(linhaVetor[0]),
                         linhaVetor[1],
@@ -150,83 +153,82 @@ public class MedicoDAO {
                         linhaVetor[4],
                         linhaVetor[5],
                         especialidades);
-
+                
                 medicos.add(novoMedico);
-                
+
                 linha = br.readLine();
-                
+
             }
             br.close();
             
-            for(Medico m : medicos){
-                System.out.println(m.getCodigo() + m.getEspecialidades().toString());
+            for (Medico m : medicos) {
+                
+               System.out.println(m.getCodigo() );
             }
-            
+             
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
-                    null, 
+                    null,
                     "Ocorreu um erro ao abrir o arquivo.",
                     "Erro de leitura",
                     JOptionPane.ERROR_MESSAGE);
         }
 
     }
-    
+
     public static DefaultTableModel getTableModel() {
+        String linhaDeEspecialidades = "";
         
         Object[][] dados = new Object[medicos.size()][4];
-        
-        
+
         int i = 0;
         for (Medico m : medicos) {
+
             dados[i][0] = m.getCodigo().toString();
             dados[i][1] = m.getCrm();
             dados[i][2] = m.getNome();
-            for(String e :m.getEspecialidades())
-            dados[i][3] = m.getEspecialidades();
+            dados[i][3] = m.getEspecialidadesSeparadasPorVirgula();
+            
+            
             i++;
         }
 
         String[] titulos = {"Código", "CRM", "Nome do(a) Médico(a)", "Especialidades"};
 
         DefaultTableModel tableModelMedico = new DefaultTableModel(dados, titulos);
-    
-        
+
         return tableModelMedico;
     }
-    
-    public static void  atualizarArquivo(){
-      
+
+    public static void atualizarArquivo() {
+
         File arquivoAtual = new File(ARQUIVO);
         File arquivoTemp = new File(ARQUIVO_TEMP);
-        
+
         try {
             arquivoTemp.createNewFile();
-            
+
             BufferedWriter bwTemp = Files.newBufferedWriter(
                     PATH_TEMP,
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
-            
-            for (Medico m : medicos){
+
+            for (Medico m : medicos) {
                 bwTemp.write(m.getSeparadoPorPontoEVirgula());
                 bwTemp.newLine();
             }
             bwTemp.close();
             arquivoAtual.delete();
             arquivoTemp.renameTo(arquivoAtual);
-            
+
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
-                    null, 
+                    null,
                     "Ocorreu um erro ao criar o arquivo!",
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
-        
+
     }
-    
-    
 
 }
